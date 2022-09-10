@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_stack_a.c                                      :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 19:06:31 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/09 23:46:15 by kadjane          ###   ########.fr       */
+/*   Created: 2022/09/10 17:29:03 by kadjane           #+#    #+#             */
+/*   Updated: 2022/09/10 17:29:16 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	swap(t_list	**stack)
+t_list	*node(int a)
 {
-	int	data;
+	t_list *new;
 
-	if((*stack) && (*stack)->next  )
-	{
-		data = (*stack)->value;
-		(*stack)->value = (*stack)->next->value;
-		(*stack)->next->value = data; 
-	}
+	new = (t_list *) malloc(sizeof(t_list));
+	new->value = a;
+	new->next = NULL;
+	return new;
 }
 
-void	ss(t_list **stack_a, t_list **stack_b,int ac)
+void	add_node(t_list **stack, t_list *new_node)
 {
-	swap(stack_a);
-	swap(stack_b);
+	new_node -> next = *stack;
+	*stack = new_node;
 }
 
-void	push(t_list	**stack_1, t_list	**stack_2)
+void	print_stack(t_list *stack)
 {
 	t_list	*temp;
+	char	*str;
 	
-	temp = *stack_1;
-	add_node(stack_2,node((*stack_1)->value));
-	*stack_1 = (*stack_1)->next;
-	free(temp);
+	temp = stack;
+	while(temp)
+	{
+		str = ft_itoa(temp->value);
+		ft_putstr(str);
+		temp = temp->next;
+	}
 }
