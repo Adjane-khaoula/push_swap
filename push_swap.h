@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/11 11:18:54 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/11 17:07:14 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	rotate(t_list **stack);
 void	rr(t_list **stack_a, t_list **stack_b);
 void	reverse_rotate(t_list **stack);
 void	sort_2_element(t_list **stack);
-void	sort_3_element(t_list **stack);
+void	sort_3_element(t_list **stack_a, t_list **stack_b);
+void	sort_4_element(t_list **stack_a, t_list **stack_b);
+void	sort_5_element(t_list **stack_a, t_list **stack_b);
 
 #endif

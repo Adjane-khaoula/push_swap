@@ -6,12 +6,12 @@
 #    By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 16:38:04 by kadjane           #+#    #+#              #
-#    Updated: 2022/09/11 11:38:27 by kadjane          ###   ########.fr        #
+#    Updated: 2022/09/11 17:05:18 by kadjane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = ft_atoi.c ft_putstr.c ft_itoa.c ft_strlen.c  instructions_1.c instructions_2.c fun_sort.c stack.c frctpush_swap.c  
+SRCS = ft_atoi.c ft_putstr.c ft_itoa.c ft_strlen.c  instructions_1.c instructions_2.c fun_sort.c stack.c push_swap.c  
 NAME := push_swap
 
 OBJS = $(SRCS:.c=.o)
@@ -32,4 +32,5 @@ fclean : clean
 re : fclean all
 
 run : all
-	./push_swap 1 2 3 4 5 123
+
+	./push_swap 100 50 40 10

@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/11 11:19:53 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/11 16:44:14 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ int	main(int ac, char **av)
 	}
 	print_stack(stack_a);
 	printf("\n\n");
-	if (ac >=3)
+	if (n == 3)
 		sort_2_element(&stack_a);
-	if (ac >=4)
+	if (n == 4)
 		sort_3_element(&stack_a);
+	if (n == 5)
+		sort_4_element(&stack_a,&stack_b);
 	print_stack(stack_a);
 }
