@@ -6,57 +6,64 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/15 15:37:09 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/15 23:21:05 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	swap_element(char **tab, int nbr_node)
+void	swap_element(int **tab, int nbr_node)
 {
 	int	tmp;
+	int	*tab_tmp;
 	
-	while (nbr_node--)
+	tab_tmp = *tab;
+	while (--nbr_node)
 	{
-		if (**tab > **(tab + 1))
+		if (*tab_tmp > *(tab_tmp + 1))
 		{
-			tmp = **tab;
-			**tab = **(tab + 1);
-			**(tab + 1) = tmp;
+			tmp = *tab_tmp;
+			*tab_tmp = *(tab_tmp + 1);
+			*(tab_tmp + 1) = tmp;
 		}
-		tab++;
+		tab_tmp++;
 	}
 }
 
-int	table_is_sorted(char **table, int nbr_node)
+int	table_is_sorted(int **table, int nbr_node)
 {
 	int	i;
+	int	*tab_tmp;
 
 	i = 0;
+	tab_tmp = *table;
 	while (--nbr_node)
 	{
-		if (**table > **(table + 1))
+		if (*tab_tmp > *(tab_tmp + 1))
 			i++;
-		table++;
+		tab_tmp++;
 	}
 	return i;
 }
 
-char	*sort_stack_a(t_list	**stack_a, int nbr_node)
+int	*sort_stack_a(t_list	**stack_a, int nbr_node)
 {
-	char	*tab;
-	int		i;
+	int	*tab;
+	int	*tmp;
+	int	i;
 
 	i = 1;
 	tab = malloc(sizeof(int) * nbr_node);
+	tmp = tab;
 	while (*stack_a)
 	{
-		*tab++ = (*stack_a)->value;
+		*tmp = (*stack_a)->value;
 		*stack_a = (*stack_a)->next;
+		tmp++;
 	}
 	while (i)
 	{
-		swap_element(&tab,nbr_node - 1);
+		swap_element(&tab,nbr_node);
 		i = table_is_sorted(&tab, nbr_node);
 	}
 	return (tab);
