@@ -6,7 +6,7 @@
 #    By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 16:38:04 by kadjane           #+#    #+#              #
-#    Updated: 2022/09/11 17:05:18 by kadjane          ###   ########.fr        #
+#    Updated: 2022/09/15 15:28:33 by kadjane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS := -Wall -Wextra -Werror 
+CFLAGS := -Wall -Wextra -Werror -fsanitize=address -g
 
 all: $(NAME)
 
@@ -33,4 +33,4 @@ re : fclean all
 
 run : all
 
-	./push_swap 100 50 40 10
+	./push_swap 10 5 20 2 100 60 1

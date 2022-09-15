@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/11 16:44:14 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/15 15:37:24 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,25 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	
+	int		nbr_node;
+	char	*table;
 	int	n;
-
+	
+	nbr_node = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	n = ac;
 	if (ac-- > 1)
 	{
 		while(ac > 0)
+		{
 			add_node(&stack_a, node(ft_atoi(av[ac--])));
+			nbr_node++;
+		}
 	}
-	print_stack(stack_a);
-	printf("\n\n");
-	if (n == 3)
-		sort_2_element(&stack_a);
-	if (n == 4)
-		sort_3_element(&stack_a);
-	if (n == 5)
-		sort_4_element(&stack_a,&stack_b);
-	print_stack(stack_a);
+	// printf("----%d\n", nbr_node);
+	
+	table = sort_stack_a(&stack_a, nbr_node);
+	while (nbr_node--)
+		printf("+++++%d\n",*table++);
 }
