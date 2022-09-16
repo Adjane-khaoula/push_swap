@@ -1,91 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_sort.c                                         :+:      :+:    :+:   */
+/*   fun_sort_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/15 23:21:05 by kadjane          ###   ########.fr       */
+/*   Created: 2022/09/16 15:25:09 by kadjane           #+#    #+#             */
+/*   Updated: 2022/09/16 16:44:58 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"push_swap.h"
+#include "push_swap.h"
 
-void	swap_element(int **tab, int nbr_node)
+int	stack_is_sorted(t_list **stack,int nbr_node)
 {
-	int	tmp;
-	int	*tab_tmp;
+	t_list	*tmp;
 	
-	tab_tmp = *tab;
+	tmp = *stack;
+
 	while (--nbr_node)
 	{
-		if (*tab_tmp > *(tab_tmp + 1))
-		{
-			tmp = *tab_tmp;
-			*tab_tmp = *(tab_tmp + 1);
-			*(tab_tmp + 1) = tmp;
-		}
-		tab_tmp++;
+		if (tmp->value > tmp->next->value)
+			return (-1);
+		tmp = tmp->next;
 	}
+	return (0);
 }
 
-int	table_is_sorted(int **table, int nbr_node)
+void	sort_2_element(t_list **stack)
 {
-	int	i;
-	int	*tab_tmp;
-
-	i = 0;
-	tab_tmp = *table;
-	while (--nbr_node)
-	{
-		if (*tab_tmp > *(tab_tmp + 1))
-			i++;
-		tab_tmp++;
-	}
-	return i;
+	if ((*stack)->value > (*stack)->next->value)
+		sa(stack);
 }
-
-int	*sort_stack_a(t_list	**stack_a, int nbr_node)
-{
-	int	*tab;
-	int	*tmp;
-	int	i;
-
-	i = 1;
-	tab = malloc(sizeof(int) * nbr_node);
-	tmp = tab;
-	while (*stack_a)
-	{
-		*tmp = (*stack_a)->value;
-		*stack_a = (*stack_a)->next;
-		tmp++;
-	}
-	while (i)
-	{
-		swap_element(&tab,nbr_node);
-		i = table_is_sorted(&tab, nbr_node);
-	}
-	return (tab);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// void	sort_2_element(t_list **stack)
-// {
-// 	if ((*stack)->value > (*stack)->next->value)
-// 		swap (stack);
-// }
 
 // void	sort_3_element(t_list **stack_a, t_list **stack_b)
 // {

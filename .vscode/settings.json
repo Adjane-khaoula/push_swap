@@ -1,5 +1,9 @@
 {
 	"cSpell.words": [
 		"putstr"
-	]
+	],
+	"files.associations": {
+		"fun_stack_a": "c",
+		"push_swap.h": "c"
+	}
 }

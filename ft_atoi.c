@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:00:14 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/06 18:47:16 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/16 15:21:33 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	ft_atoi(const char	*str)
 				n = -1;
 		}
 		while (*str >= '0' && *str <= '9')
-		{
 			cmp = (cmp * 10) + (*str++ - '0');
-			if (n > 0 && cmp > 2147483647)
-				return (-1);
-			if (n < 0 && cmp > 2147483648)
-				return (0);
+		if (*str < 0 || *str > 9 || (n > 0 && cmp > 2147483647)
+				|| (n < 0 && cmp > 2147483648))
+		{
+			ft_putstr("Error");
+			exit(0);
 		}
 		return (n * cmp);
 	}

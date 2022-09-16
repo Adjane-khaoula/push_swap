@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    instructions_1.c                                  :+:      :+:    :+:   */
+/*   fun_stack_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/10 17:44:45 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/16 19:14:42 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list	**stack)
+void	sb(t_list	**stack)
 {
 	int	data;
 
@@ -20,24 +20,26 @@ void	swap(t_list	**stack)
 	{
 		data = (*stack)->value;
 		(*stack)->value = (*stack)->next->value;
-		(*stack)->next->value = data; 
+		(*stack)->next->value = data;
+		write(1,"sb\n",3);
 	}
 }
 
-void	push(t_list	**stack_1, t_list	**stack_2)
+void	pb(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list	*temp;
 	
-	if(*stack_1)
+	if(*stack_a)
 	{
-		temp = *stack_1;
-		add_node(stack_2,node((*stack_1)->value));
-		*stack_1 = (*stack_1)->next;
+		temp = *stack_a;
+		add_node(stack_b,node((*stack_a)->value));
+		*stack_a = (*stack_a)->next;
 		free(temp);
+		write(1,"pb\n",3);
 	}
 }
 
-void	rotate(t_list **stack)
+void	rb(t_list **stack)
 {
 	t_list	*temp_1;
 	t_list	*temp_2;
@@ -54,10 +56,11 @@ void	rotate(t_list **stack)
 		temp_1->next = first_node;
 		*stack = (*stack)->next;
 		free(temp_2);
+		write(1,"rb\n",3);
 	}
 }
 
-void	reverse_rotate(t_list **stack)
+void	rrb(t_list **stack)
 {
 	t_list	**temp;
 	t_list	*end_node;
@@ -73,5 +76,6 @@ void	reverse_rotate(t_list **stack)
 		*stack = end_node;
 		free(*temp);
 		*temp = NULL;
+		write(1,"rrb\n",4);
 	}
 }
