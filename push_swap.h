@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 19:24:56 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 21:31:57 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	s_data
 	int	nbr_node;
 	int	middle;
 	int	step;
+	int	start;
+	int	end;
 } t_data;
 
 int		ft_atoi(const char	*str);

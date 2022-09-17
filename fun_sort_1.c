@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 17:49:06 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 23:20:01 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 
 	tmp = *stack_a;
 	iter = data->nbr_node;
-	while (iter--)
+	while (iter-- && tmp)
 	{
-		if (tmp->value >= *(tab + (data->middle - data->step)) && tmp->value < *(tab + data->middle))
+		if (tmp->value >= *(tab + (data->start)) && tmp->value < *(tab + data->middle))
 		{
 			tmp = tmp->next;
 			pb(stack_a,stack_b);
 			rb(stack_b);
 		}
-		else if (tmp->value <= *(tab + (data->middle + data->step)) && tmp->value >= *(tab + data->middle))
+		else if (tmp->value <= *(tab + (data->end)) && tmp->value >= *(tab + data->middle))
 		{
 			tmp = tmp->next;
 			pb(stack_a,stack_b);
@@ -100,17 +100,20 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 {
 	data->middle = data->nbr_node / 2;
-	data->step = 10; 
-	
-	while (((data->middle - data->step) >= 0) && 
-			((data->middle + data->step) <= (data->nbr_node - 1)))
+	data->step = 2; 
+	data->start = data->middle - data->step;
+	data->end = data->middle + data->step;
+	while ((data->start > 0) && 
+			(data->end < (data->nbr_node - 1)))
 	{
 		push_in_b_hlp(table, data, stack_a, stack_b);
-		data->step += 10;
+		data->start -= data->step; 
+		data->end += data->step; 
 	}
 	if (*stack_a)
 	{
-		data->step = data->middle;
+		data->start = 0;
+		data->end = data->nbr_node - 1;
 		push_in_b_hlp(table, data, stack_a, stack_b);
 	}
 }

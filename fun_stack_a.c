@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 11:40:35 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 22:53:13 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	pa(t_list	**stack_1, t_list	**stack_2)
 		add_node(stack_2,node((*stack_1)->value));
 		*stack_1 = (*stack_1)->next;
 		free(temp);
+		temp = NULL;
 		write(1,"pa\n",3);
 	}
 }
@@ -57,6 +58,7 @@ void	ra(t_list **stack)
 		temp_1->next = first_node;
 		*stack = (*stack)->next;
 		free(temp_2);
+		temp_2 = NULL;
 		write(1,"ra\n",3);
 	}
 }
