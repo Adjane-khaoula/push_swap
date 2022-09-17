@@ -6,16 +6,16 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/16 18:03:21 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 19:24:56 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<unistd.h>
+# include<stdlib.h>
+# include<stdio.h>
+# include<unistd.h>
 
 typedef struct	s_list
 {
@@ -42,6 +42,7 @@ void	print_stack(t_list *stack);
 void	sa(t_list	**stack);
 void	pa(t_list	**stack_1, t_list	**stack_2);
 void	ra(t_list **stack);
+void	ra1(t_list **stack_a);
 void	rra(t_list **stack);
 
 void	sb(t_list	**stack);

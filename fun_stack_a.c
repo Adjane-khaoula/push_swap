@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/16 19:13:43 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 11:40:35 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	pa(t_list	**stack_1, t_list	**stack_2)
 		write(1,"pa\n",3);
 	}
 }
+
 
 void	ra(t_list **stack)
 {

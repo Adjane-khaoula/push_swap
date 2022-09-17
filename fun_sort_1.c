@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/16 19:26:30 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 17:49:06 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,34 +76,39 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 
 	tmp = *stack_a;
 	iter = data->nbr_node;
-	while (--iter)
+	while (iter--)
 	{
-		if (tmp->value >= *(tab + (data->middle - data->step)) && tmp->value < *(tab+ data->middle))
-			pb(stack_a,stack_b);
-		else if (tmp->value <= *(tab + (data->middle + data->step)) && tmp->value >= *(tab + data->middle))
+		if (tmp->value >= *(tab + (data->middle - data->step)) && tmp->value < *(tab + data->middle))
 		{
+			tmp = tmp->next;
 			pb(stack_a,stack_b);
 			rb(stack_b);
 		}
+		else if (tmp->value <= *(tab + (data->middle + data->step)) && tmp->value >= *(tab + data->middle))
+		{
+			tmp = tmp->next;
+			pb(stack_a,stack_b);
+		}
 		else
+		{
+			tmp = tmp->next;
 			ra(stack_a);
-		printf("++++++++++ %p\n",tmp);
-		tmp = tmp->next;
+		}
 	}
 }
 
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 {
-	data->middle = (data->nbr_node - 1) / 2;
-	data->step = 2; 
+	data->middle = data->nbr_node / 2;
+	data->step = 10; 
 	
 	while (((data->middle - data->step) >= 0) && 
-			((data->middle +data->step) <= (data->nbr_node - 1)))
+			((data->middle + data->step) <= (data->nbr_node - 1)))
 	{
 		push_in_b_hlp(table, data, stack_a, stack_b);
-		data->step += 2;
+		data->step += 10;
 	}
-	if (!(*stack_a))
+	if (*stack_a)
 	{
 		data->step = data->middle;
 		push_in_b_hlp(table, data, stack_a, stack_b);

@@ -6,7 +6,7 @@
 #    By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/02 16:38:04 by kadjane           #+#    #+#              #
-#    Updated: 2022/09/16 15:35:12 by kadjane          ###   ########.fr        #
+#    Updated: 2022/09/17 14:16:51 by kadjane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,4 @@ fclean : clean
 	@rm -f $(NAME)
 re : fclean all
 
-# run : all
-
-# 	./push_swap 10 5 20 2 100 60 1
+# run : fclean

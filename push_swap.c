@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/16 18:17:39 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/17 17:50:30 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int ac, char **av)
 			data.nbr_node++;
 		}
 	}
-
 	printf("++++++++++stack_a_debut\n");
 	print_stack(stack_a);
 	printf("\n\n");
@@ -52,19 +51,3 @@ int	main(int ac, char **av)
 	print_stack(stack_b);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-	//printf("+++++++++++++%d\n",stack_is_sorted(&stack_a, nbr_node));
-	// table = sort_stack_in_table(&stack_a, nbr_node);
-	// while (nbr_node--)
-	// 	printf("+++++%d\n",*table++);
