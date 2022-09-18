@@ -6,26 +6,49 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/16 19:14:42 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/18 19:08:03 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sb(t_list	**stack)
+void	sb_help(t_data *data)
 {
-	int	data;
-
-	if((*stack) && (*stack)->next  )
+	
+	if (data->output)
 	{
-		data = (*stack)->value;
+		if(ft_strcmp(data->output->out, "sa") == 0)
+		{
+			ft_putstr("ss");
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("sb");
+			free(data->output);
+			data->output = NULL;
+		}
+	}
+	else
+		data->output = node_store("sb");
+}
+
+void	sb(t_list	**stack,t_data *data)
+{
+	int	first_data;
+
+	if((*stack) && (*stack)->next)
+	{
+		first_data = (*stack)->value;
 		(*stack)->value = (*stack)->next->value;
-		(*stack)->next->value = data;
-		write(1,"sb\n",3);
+		(*stack)->next->value = first_data;
+		sb_help(data);
 	}
 }
 
-void	pb(t_list	**stack_a, t_list	**stack_b)
+void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data)
 {
 	t_list	*temp;
 	
@@ -35,11 +58,39 @@ void	pb(t_list	**stack_a, t_list	**stack_b)
 		add_node(stack_b,node((*stack_a)->value));
 		*stack_a = (*stack_a)->next;
 		free(temp);
-		write(1,"pb\n",3);
+		if (data->output)
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("pb");
+			data->output->out = "pb";
+		}
+		else
+			data->output = node_store("pb");
 	}
 }
 
-void	rb(t_list **stack)
+void	rb_help(t_data *data)
+{
+	if (data->output)
+	{
+		if(ft_strcmp(data->output->out, "ra") == 0)
+		{
+			ft_putstr("rr");
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("rb");
+			data->output->out = "rb";
+		}
+	}
+	else
+		data->output = node_store("rb");
+}
+
+void	rb(t_list **stack,t_data *data)
 {
 	t_list	*temp_1;
 	t_list	*temp_2;
@@ -56,26 +107,6 @@ void	rb(t_list **stack)
 		temp_1->next = first_node;
 		*stack = (*stack)->next;
 		free(temp_2);
-		write(1,"rb\n",3);
-	}
-}
-
-void	rrb(t_list **stack)
-{
-	t_list	**temp;
-	t_list	*end_node;
-	
-	temp = stack;
-	
-	if(stack && (*stack)->next)
-	{
-		while((*temp)->next)
-			temp = &(*temp)->next;
-		end_node = node((*temp)->value);
-		end_node->next = *stack;
-		*stack = end_node;
-		free(*temp);
-		*temp = NULL;
-		write(1,"rrb\n",4);
+		rb_help(data);
 	}
 }

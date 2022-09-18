@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:29:03 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/15 14:12:27 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/18 18:23:44 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ t_list	*node(int a)
 
 	new = (t_list *) malloc(sizeof(t_list));
 	new->value = a;
+	new->next = NULL;
+	return new;
+}
+
+t_list	*node_store(char *output)
+{
+	t_list *new;
+
+	new = (t_list *) malloc(sizeof(t_list));
+	new->out = output;
 	new->next = NULL;
 	return new;
 }

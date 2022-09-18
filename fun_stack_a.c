@@ -6,26 +6,48 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 22:53:13 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/18 18:57:52 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list	**stack)
+void	sa_help(t_data *data)
 {
-	int	data;
+	
+	if (data->output)
+	{
+		if(ft_strcmp(data->output->out, "sb") == 0)
+		{
+			write(1,"ss\n",3);
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("sa");
+			data->output->out = "sa";
+		}
+	}
+	else
+		data->output = node_store("sa");
+}
+
+void	sa(t_list	**stack,t_data *data)
+{
+	int	first_data;
 
 	if((*stack) && (*stack)->next  )
 	{
-		data = (*stack)->value;
+		first_data = (*stack)->value;
 		(*stack)->value = (*stack)->next->value;
-		(*stack)->next->value = data;
-		write(1,"sa\n",3); 
+		(*stack)->next->value = first_data;
+		sa_help(data);
 	}
 }
 
-void	pa(t_list	**stack_1, t_list	**stack_2)
+void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data)
 {
 	t_list	*temp;
 	
@@ -36,17 +58,44 @@ void	pa(t_list	**stack_1, t_list	**stack_2)
 		*stack_1 = (*stack_1)->next;
 		free(temp);
 		temp = NULL;
-		write(1,"pa\n",3);
+		if (data->output)
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("pa");
+			data->output->out = "pa";
+		}
+		else
+			data->output = node_store("pa");
 	}
 }
 
+void	ra_help(t_data *data)
+{
+	if (data->output)
+	{
+		if(ft_strcmp(data->output->out, "rb") == 0)
+		{
+			write(1,"rr\n",3);
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("ra");
+			data->output->out = "ra";
+		}
+	}
+	else
+		data->output = node_store("ra");
+}
 
-void	ra(t_list **stack)
+void	ra(t_list **stack,t_data *data)
 {
 	t_list	*temp_1;
 	t_list	*temp_2;
 	t_list	*first_node;
-	
+
 	temp_1 = *stack;
 	temp_2 = *stack;
 	
@@ -58,27 +107,7 @@ void	ra(t_list **stack)
 		temp_1->next = first_node;
 		*stack = (*stack)->next;
 		free(temp_2);
-		temp_2 = NULL;
-		write(1,"ra\n",3);
+		ra_help(data);
 	}
 }
 
-void	rra(t_list **stack)
-{
-	t_list	**temp;
-	t_list	*end_node;
-	
-	temp = stack;
-	
-	if(stack && (*stack)->next)
-	{
-		while((*temp)->next)
-			temp = &(*temp)->next;
-		end_node = node((*temp)->value);
-		end_node->next = *stack;
-		*stack = end_node;
-		free(*temp);
-		*temp = NULL;
-		write(1,"rra\n",4);
-	}
-}

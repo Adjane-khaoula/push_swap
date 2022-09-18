@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 23:20:01 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/18 15:15:48 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 {
 	data->middle = data->nbr_node / 2;
-	data->step = 2; 
+	data->step = 50; 
 	data->start = data->middle - data->step;
 	data->end = data->middle + data->step;
 	while ((data->start > 0) && 
