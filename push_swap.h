@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 18:23:44 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:11:41 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,22 @@ t_list	*node(int a);
 void	print_stack(t_list *stack);
 t_list	*node_store(char *output);
 
-void	sa(t_list	**stack);
-void	pa(t_list	**stack_1, t_list	**stack_2);
-void	ra(t_list **stack);
-void	ra1(t_list **stack_a);
+void	sa(t_list	**stack,t_data *data);
+void	sa_help(t_data *data);
+void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data);
+void	ra(t_list **stack,t_data *data);
+void	ra_help(t_data *data);
 void	rra(t_list **stack);
 
-void	sb(t_list	**stack);
-void	pb(t_list	**stack_1, t_list	**stack_2);
-void	rb(t_list **stack);
+void	sb(t_list	**stack,t_data *data);
+void	sb_help(t_data *data);
+void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data);
+void	rb(t_list **stack,t_data *data);
+void	rb_help(t_data *data);
 void	rrb(t_list **stack);
 
-void	ss(t_list **stack_a, t_list **stack_b);
-void	rr(t_list **stack_a, t_list **stack_b);
+void	ss (t_list **stack_a, t_list **stack_b,t_data *data);
+void	rr(t_list **stack_a, t_list **stack_b,t_data *data);
 void	rrr(t_list **stack_a, t_list **stack_b);
 
 int		*sort_stack_in_table(t_list	*stack_a, int nbr_node);

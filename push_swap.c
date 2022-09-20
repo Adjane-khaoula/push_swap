@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 12:16:20 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:56:40 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_data	data;
-	int		*table;
+	// int		*table;
 	int		n;
 	
+	
 	data.nbr_node = 0;
+	data.output = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
 	n = ac;
@@ -34,7 +36,36 @@ int	main(int ac, char **av)
 		}
 	}
 	
-	table = sort_stack_in_table(stack_a, data.nbr_node);
-	push_in_b(table, &data, &stack_a, &stack_b);
+	// table = sort_stack_in_table(stack_a, data.nbr_node);
+	// push_in_b(table, &data, &stack_a, &stack_b);
+	// print_stack(stack_a);
+	ra(&stack_a,&data);
+	// printf("\n\n\n");
+	// print_stack(stack_a);
+	
+	ra(&stack_a,&data);
+	// print_stack(stack_a);
+	// printf("\n\n\n");
+	
+	pb(&stack_a,&stack_b,&data);
+	pb(&stack_a,&stack_b,&data);
+	rb(&stack_b,&data);
+	ra(&stack_a,&data);
+	// print_stack(stack_a);
+	// printf("\n\n\n");
+	
+	sb(&stack_b,&data);
+	// print_stack(stack_a);
+	// printf("\n\n\n");
+	
+	sa(&stack_a,&data);
+	// print_stack(stack_a);
+	// printf("\n\n\n");
+	
+	ra(&stack_a,&data);
+	pb(&stack_a,&stack_b,&data);
+	pa(&stack_b,&stack_a,&data);
+	// print_stack(stack_a);
+	// printf("\n\n\n");
 }
 

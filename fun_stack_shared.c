@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions_2.c                                   :+:      :+:    :+:   */
+/*   fun_stack_shared.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 19:00:34 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:51:32 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_list **stack_a, t_list **stack_b,t_data *data)
+void	ss (t_list **stack_a, t_list **stack_b,t_data *data)
 {
 	sa(stack_a,data);
 	sb(stack_b,data);
@@ -26,10 +26,10 @@ void	rr(t_list **stack_a, t_list **stack_b,t_data *data)
 	ft_putstr("rr");
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b,t_data *data)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	rra(stack_a,data);
-	rrb(stack_b,data);
+	rra(stack_a);
+	rrb(stack_b);
 	ft_putstr("rrr");
 }
 
@@ -49,7 +49,6 @@ void	rrb(t_list **stack)
 		end_node->next = *stack;
 		*stack = end_node;
 		free(*temp);
-		*temp = NULL;
 		ft_putstr("rrb");
 	}
 }
@@ -69,7 +68,6 @@ void	rra(t_list **stack)
 		end_node->next = *stack;
 		*stack = end_node;
 		free(*temp);
-		*temp = NULL;
 		ft_putstr("rra");
 	}
 }

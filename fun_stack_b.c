@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 19:08:03 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 13:59:50 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	sb_help(t_data *data)
 		{
 			ft_putstr(data->output->out);
 			ft_putstr("sb");
-			free(data->output);
-			data->output = NULL;
+			data->output->out = "sb";
 		}
 	}
 	else

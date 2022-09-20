@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 18:57:52 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 17:14:21 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data)
 
 void	ra_help(t_data *data)
 {
+	printf("+++++++++++++++++++++");
 	if (data->output)
 	{
 		if(ft_strcmp(data->output->out, "rb") == 0)

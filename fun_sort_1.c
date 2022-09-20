@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 15:15:48 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/20 14:28:26 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,18 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 		if (tmp->value >= *(tab + (data->start)) && tmp->value < *(tab + data->middle))
 		{
 			tmp = tmp->next;
-			pb(stack_a,stack_b);
-			rb(stack_b);
+			pb(stack_a,stack_b,data);
+			rb(stack_b,data);
 		}
 		else if (tmp->value <= *(tab + (data->end)) && tmp->value >= *(tab + data->middle))
 		{
 			tmp = tmp->next;
-			pb(stack_a,stack_b);
+			pb(stack_a,stack_b,data);
 		}
 		else
 		{
 			tmp = tmp->next;
-			ra(stack_a);
+			ra(stack_a,data);
 		}
 	}
 }
