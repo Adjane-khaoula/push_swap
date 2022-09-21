@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/20 17:14:21 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:59:24 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ void	sa_help(t_data *data)
 	if (data->output)
 	{
 		if(ft_strcmp(data->output->out, "sb") == 0)
-		{
 			write(1,"ss\n",3);
-			free(data->output);
-			data->output = NULL;
-		}
 		else
 		{
 			ft_putstr(data->output->out);
 			ft_putstr("sa");
-			data->output->out = "sa";
 		}
+		free(data->output);
+		data->output = NULL;
 	}
 	else
 		data->output = node_store("sa");
@@ -47,22 +44,23 @@ void	sa(t_list	**stack,t_data *data)
 	}
 }
 
-void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data)
+void	pa(t_list	**stack_b, t_list	**stack_a,t_data *data)
 {
 	t_list	*temp;
 	
-	if(*stack_1)
+	if(*stack_b)
 	{
-		temp = *stack_1;
-		add_node(stack_2,node((*stack_1)->value));
-		*stack_1 = (*stack_1)->next;
+		temp = *stack_b;
+		add_node(stack_a,node((*stack_b)->value));
+		*stack_b = (*stack_b)->next;
 		free(temp);
 		temp = NULL;
 		if (data->output)
 		{
 			ft_putstr(data->output->out);
 			ft_putstr("pa");
-			data->output->out = "pa";
+			free(data->output);
+			data->output = NULL;
 		}
 		else
 			data->output = node_store("pa");
@@ -71,21 +69,17 @@ void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data)
 
 void	ra_help(t_data *data)
 {
-	printf("+++++++++++++++++++++");
 	if (data->output)
 	{
 		if(ft_strcmp(data->output->out, "rb") == 0)
-		{
 			write(1,"rr\n",3);
-			free(data->output);
-			data->output = NULL;
-		}
 		else
 		{
 			ft_putstr(data->output->out);
 			ft_putstr("ra");
-			data->output->out = "ra";
 		}
+		free(data->output);
+		data->output = NULL;
 	}
 	else
 		data->output = node_store("ra");

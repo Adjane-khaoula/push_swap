@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/20 14:11:41 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:50:36 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		table_is_sorted(int **table, int nbr_node);
 void	swap_element(int **tab, int nbr_node);
 int		stack_is_sorted(t_list **stack,int nbr_node);
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b);
+void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b);
 
 
 void	sort_2_element(t_list **stack);

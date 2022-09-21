@@ -1,16 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   fun_help.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 12:00:14 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/17 11:50:44 by kadjane          ###   ########.fr       */
+/*   Created: 2022/09/21 15:37:10 by kadjane           #+#    #+#             */
+/*   Updated: 2022/09/21 15:38:36 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_putstr(char *str)
+{
+	char	*nul;
+
+	nul = "(null)";
+	if (!str)
+	{
+		while (*nul)
+			write (1, nul++, 1);
+	}
+	else
+	{
+		while (*str)
+			write(1, str++, 1);
+		write (1, "\n", 1);
+	}
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+		i++;
+	return (i);
+}
 
 int	ft_atoi(const char	*str)
 {

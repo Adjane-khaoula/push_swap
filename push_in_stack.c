@@ -1,73 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_sort_1.c                                       :+:      :+:    :+:   */
+/*   push_in_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/20 14:28:26 by kadjane          ###   ########.fr       */
+/*   Created: 2022/09/21 15:30:23 by kadjane           #+#    #+#             */
+/*   Updated: 2022/09/21 18:12:14 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	swap_element(int **tab, int nbr_node)
-{
-	int	tmp;
-	int	*tab_tmp;
-	
-	tab_tmp = *tab;
-	while (--nbr_node)
-	{
-		if (*tab_tmp > *(tab_tmp + 1))
-		{
-			tmp = *tab_tmp;
-			*tab_tmp = *(tab_tmp + 1);
-			*(tab_tmp + 1) = tmp;
-		}
-		tab_tmp++;
-	}
-}
-
-int	table_is_sorted(int **table, int nbr_node)
-{
-	int	i;
-	int	*tab_tmp;
-
-	i = 0;
-	tab_tmp = *table;
-	while (--nbr_node)
-	{
-		if (*tab_tmp > *(tab_tmp + 1))
-			i++;
-		tab_tmp++;
-	}
-	return i;
-}
-
-int	*sort_stack_in_table(t_list	*stack_a, int nbr_node)
-{
-	int	*tab;
-	int	*tmp;
-	int	i;
-
-	i = 1;
-	tab = malloc(sizeof(int) * nbr_node);
-	tmp = tab;
-	while (stack_a)
-	{
-		*tmp = stack_a->value;
-		stack_a = stack_a->next;
-		tmp++;
-	}
-	while (i)
-	{
-		swap_element(&tab,nbr_node);
-		i = table_is_sorted(&tab, nbr_node);
-	}
-	return (tab);
-}
 
 void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 {
@@ -100,7 +44,7 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 {
 	data->middle = data->nbr_node / 2;
-	data->step = 50; 
+	data->step = 2; 
 	data->start = data->middle - data->step;
 	data->end = data->middle + data->step;
 	while ((data->start > 0) && 
@@ -117,3 +61,30 @@ void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 		push_in_b_hlp(table, data, stack_a, stack_b);
 	}
 }
+
+// void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
+// {
+// 	t_list	*tmp1;
+// 	t_list	*tmp2;
+// 	int		i;
+
+// 	tmp1 = *stack_b;
+// 	tmp2 = (*stack_b)->next;
+	
+// 	while (tmp2)
+// 	{
+// 		i++;
+// 		if (tmp2->value > tmp1->value)
+// 		{
+// 			tmp1 = tmp2;
+// 			while(i-- > 1)
+// 				rb(stack_b,data);
+// 		}
+// 		tmp2 = tmp2->next;
+		
+// 		{
+// 			sb(stack_b,data);
+// 			pa(stack_b,stack_a,data);
+// 		}
+// 	}
+// }

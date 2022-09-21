@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:29:03 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/18 18:23:44 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:36:00 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,19 @@ void	print_stack(t_list *stack)
 		ft_putstr(str);
 		temp = temp->next;
 	}
+}
+
+int	stack_is_sorted(t_list **stack,int nbr_node)
+{
+	t_list	*tmp;
+	
+	tmp = *stack;
+
+	while (--nbr_node)
+	{
+		if (tmp->value > tmp->next->value)
+			return (-1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

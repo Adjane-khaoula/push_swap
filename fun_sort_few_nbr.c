@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_sort_2.c                                       :+:      :+:    :+:   */
+/*   fun_sort_few_nbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,21 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	stack_is_sorted(t_list **stack,int nbr_node)
-{
-	t_list	*tmp;
-	
-	tmp = *stack;
-
-	while (--nbr_node)
-	{
-		if (tmp->value > tmp->next->value)
-			return (-1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
 
 // void	sort_2_element(t_list **stack)
 // {
