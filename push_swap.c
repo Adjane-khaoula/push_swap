@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 18:19:46 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/22 10:17:07 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int ac, char **av)
 	// printf("\n\n\n");
 	table = sort_stack_in_table(stack_a, data.nbr_node);
 	push_in_b(table, &data, &stack_a, &stack_b);
+	if (data.output)
+		ft_putstr(data.output->out);
 	// printf("satck_a\n");
 	// print_stack(stack_a);
 	printf("\n\n\n");
@@ -91,8 +93,7 @@ int	main(int ac, char **av)
 	// printf("\n\n\n");
 	// print_stack(stack_b);
 	
-	if (data.output)
-		ft_putstr(data.output->out);
+
 	printf("satck_b\n");
 	print_stack(stack_b);
 }

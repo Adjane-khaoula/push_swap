@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/20 14:51:32 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/22 15:40:18 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 }
 
 
-void	rrb(t_list **stack)
+void	rrb(t_list **stack,t_data *data)
 {
 	t_list	**temp;
 	t_list	*end_node;
@@ -49,11 +49,20 @@ void	rrb(t_list **stack)
 		end_node->next = *stack;
 		*stack = end_node;
 		free(*temp);
-		ft_putstr("rrb");
+		*temp = NULL;
+		if (data->output)
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("rrb");
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+			data->output = node_store("rrb");
 	}
 }
 
-void	rra(t_list **stack)
+void	rra(t_list **stack, t_data *data)
 {
 	t_list	**temp;
 	t_list	*end_node;
@@ -68,6 +77,15 @@ void	rra(t_list **stack)
 		end_node->next = *stack;
 		*stack = end_node;
 		free(*temp);
-		ft_putstr("rra");
+		*temp = NULL;
+		if (data->output)
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("rra");
+			free(data->output);
+			data->output = NULL;
+		}
+		else
+			data->output = node_store("rra");
 	}
 }

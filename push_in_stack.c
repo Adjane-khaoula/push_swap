@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:30:23 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 18:12:14 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/22 16:34:05 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b)
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 {
 	data->middle = data->nbr_node / 2;
-	data->step = 2; 
+	data->step = 20; 
 	data->start = data->middle - data->step;
 	data->end = data->middle + data->step;
 	while ((data->start > 0) && 
@@ -62,29 +62,33 @@ void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 	}
 }
 
-// void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
-// {
-// 	t_list	*tmp1;
-// 	t_list	*tmp2;
-// 	int		i;
+void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
+{
+	t_list	*tmp1;
+	t_list	*tmp2;
+	int		memory;
 
-// 	tmp1 = *stack_b;
-// 	tmp2 = (*stack_b)->next;
+	tmp1 = *stack_b;
+	tmp2 = (*stack_b)->next;
 	
-// 	while (tmp2)
-// 	{
-// 		i++;
-// 		if (tmp2->value > tmp1->value)
-// 		{
-// 			tmp1 = tmp2;
-// 			while(i-- > 1)
-// 				rb(stack_b,data);
-// 		}
-// 		tmp2 = tmp2->next;
-		
-// 		{
-// 			sb(stack_b,data);
-// 			pa(stack_b,stack_a,data);
-// 		}
-// 	}
-// }
+	while (tmp1->value < tmp2->value)
+	{
+		memory = tmp1->value;
+		rb(stack_b,data);
+		tmp1 = tmp2;
+		tmp2 = tmp1->next;
+	}
+	if (tmp1->value > memory)
+	{
+		pa(stack_b,stack_a,data);
+		tmp1 = tmp2;
+		tmp2 = tmp1->next;
+	}
+	else
+	{
+		rrb(stack_b,data);
+		pa(stack_b,stack_a,data);
+		tmp1 = tmp2;
+		tmp2 = tmp1->next;
+	}
+}

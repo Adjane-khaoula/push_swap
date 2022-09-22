@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 15:50:36 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/22 15:40:12 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ void	sa_help(t_data *data);
 void	pa(t_list	**stack_1, t_list	**stack_2,t_data *data);
 void	ra(t_list **stack,t_data *data);
 void	ra_help(t_data *data);
-void	rra(t_list **stack);
+void	rra(t_list **stack, t_data *data);
 
 void	sb(t_list	**stack,t_data *data);
 void	sb_help(t_data *data);
 void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data);
 void	rb(t_list **stack,t_data *data);
 void	rb_help(t_data *data);
-void	rrb(t_list **stack);
+void	rrb(t_list **stack,t_data *data);
 
 void	ss (t_list **stack_a, t_list **stack_b,t_data *data);
 void	rr(t_list **stack_a, t_list **stack_b,t_data *data);
