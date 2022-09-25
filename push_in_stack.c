@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:30:23 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/22 16:34:05 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/25 18:45:35 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,49 @@ void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
-	int		memory;
+	t_list	*tmp3;
+	int		i;
 
 	tmp1 = *stack_b;
 	tmp2 = (*stack_b)->next;
-	
-	while (tmp1->value < tmp2->value)
+	tmp3 = *stack_a;
+	i = 0;
+	while (*stack_b)
 	{
-		memory = tmp1->value;
-		rb(stack_b,data);
-		tmp1 = tmp2;
-		tmp2 = tmp1->next;
-	}
-	if (tmp1->value > memory)
-	{
-		pa(stack_b,stack_a,data);
-		tmp1 = tmp2;
-		tmp2 = tmp1->next;
-	}
-	else
-	{
-		rrb(stack_b,data);
-		pa(stack_b,stack_a,data);
-		tmp1 = tmp2;
-		tmp2 = tmp1->next;
+		if ((*stack_b)->value < tmp2->value)
+		{
+			rb(stack_b,data);
+			tmp2 = (*stack_b)->next;
+		}
+		else 
+		{
+			while (tmp1->next)
+				tmp1 = tmp1->next;
+			if ((*stack_b)->value < tmp1->value)
+				rrb(stack_b,data);
+			while (*stack_a && tmp3->next)
+				tmp3 = tmp3->next;
+			if (*stack_a && (*stack_b)->value > tmp3->value && i == 0)
+			{
+				pa(stack_b,stack_a,data);
+				ra(stack_a,data);
+			}
+			else
+			{
+				while (*stack_a && (*stack_b)->value > (*stack_a)->value)
+				{
+					ra(stack_a,data);
+					i++;
+				}
+				while (*stack_a && (*stack_b)->value < (*stack_a)->value && i)
+				{
+					rra(stack_a,data);
+					i--;
+				}
+				pa(stack_b,stack_a,data);
+			}
+		}
+		tmp1 = *stack_b;
+		tmp3 = *stack_a;
 	}
 }

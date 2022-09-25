@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/22 15:40:12 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/25 18:21:29 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	rrb(t_list **stack,t_data *data);
 
 void	ss (t_list **stack_a, t_list **stack_b,t_data *data);
 void	rr(t_list **stack_a, t_list **stack_b,t_data *data);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	rrr(t_data *data, t_list **stack_a, t_list **stack_b);
 
 int		*sort_stack_in_table(t_list	*stack_a, int nbr_node);
 int		table_is_sorted(int **table, int nbr_node);
@@ -70,6 +70,7 @@ void	swap_element(int **tab, int nbr_node);
 int		stack_is_sorted(t_list **stack,int nbr_node);
 void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b);
 void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b);
+void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a);
 
 
 void	sort_2_element(t_list **stack);

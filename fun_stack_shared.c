@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/22 15:40:18 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/25 18:20:49 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	rr(t_list **stack_a, t_list **stack_b,t_data *data)
 	ft_putstr("rr");
 }
 
-void	rrr(t_list **stack_a, t_list **stack_b)
+void	rrr(t_data *data, t_list **stack_a, t_list **stack_b)
 {
-	rra(stack_a);
-	rrb(stack_b);
+	rra(stack_a,data);
+	rrb(stack_b,data);
 	ft_putstr("rrr");
 }
 
