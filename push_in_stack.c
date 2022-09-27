@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:30:23 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/26 20:25:52 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/27 17:11:08 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,14 @@ void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 {
 	t_list	*tmp1;
-	t_list	*tmp3;
+	t_list	*tmp2;
 	int		last_value;
-	int		i;
-	i = 0;
+
 	last_value = 0;
 	while (*stack_b && (*stack_b)->next)
 	{
 		tmp1 = *stack_b;
-		tmp3 = *stack_a;
+		tmp2 = *stack_a;
 
 		if (*stack_a && !((*stack_a)->next))
 			last_value = (*stack_a)->value;
@@ -83,19 +82,19 @@ void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 		{
 			if ((*stack_b)->value < tmp1->value)
 				rrb(stack_b,data);
-			while (*stack_a && tmp3->next)
-				tmp3 = tmp3->next;
-			if (tmp3 && ((*stack_b)->value > tmp3->value) && (*stack_b)->value > (*stack_a)->value)
+			while (*stack_a && tmp2->next)
+				tmp2 = tmp2->next;
+			if (tmp2 && ((*stack_b)->value > tmp2->value) && (*stack_b)->value > (*stack_a)->value)
 			{
-				while ((*stack_a) && last_value && tmp3->value != last_value && ((*stack_b)->value > tmp3->value))
+				while ((*stack_a) && last_value && tmp2->value != last_value && ((*stack_b)->value > tmp2->value))
 				{
 					rra(stack_a,data);
-					tmp3 = *stack_a;
-					while (*stack_a && tmp3->next)
-						tmp3 = tmp3->next;
+					tmp2 = *stack_a;
+					while (*stack_a && tmp2->next)
+						tmp2 = tmp2->next;
 				}
 			}
-			if (tmp3 && tmp3->value == last_value && ((*stack_b)->value > tmp3->value))
+			if (tmp2 && tmp2->value == last_value && ((*stack_b)->value > tmp2->value))
 			{
 				last_value = (*stack_b)->value;
 				pa(stack_b,stack_a,data);
@@ -103,21 +102,36 @@ void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 			}
 			else
 			{
-				while (tmp3 && tmp3->value != last_value && (*stack_b)->value < tmp3->value )
+				while (tmp2 && tmp2->value != last_value && (*stack_b)->value < tmp2->value )
 				{
 					rra(stack_a,data);
-					tmp3 = *stack_a;
-					while (*stack_a && tmp3->next)
-						tmp3 = tmp3->next;
+					tmp2 = *stack_a;
+					while (*stack_a && tmp2->next)
+						tmp2 = tmp2->next;
 				}
 				while (*stack_a && ((*stack_b)->value > (*stack_a)->value))
 					ra(stack_a,data);
+	
+				// while (*stack_a && (*stack_a)->next && ((*stack_b)->value > (*stack_a)->value) && 
+				// 		((*stack_b)->value > ((*stack_a)->next)->value))
+				// 			ra(stack_a,data);
+				
 				pa(stack_b,stack_a,data);
+				// if (*stack_a && (*stack_a)->next && ((*stack_b)->value > (*stack_a)->value) && 
+				// 		((*stack_b)->value < ((*stack_a)->next)->value))
+				// 			sa(stack_a,data);
+				
+				// if (*stack_a && (*stack_a)->next && ((*stack_a)->value > ((*stack_a)->next)->value))
+				// 	sa(stack_a, data);
 			}
 		}
-		else if ((*stack_b)->value < ((*stack_b)->next)->value)
+		else if ((*stack_b)->value < (((*stack_b)->next)->next)->value && (*stack_b)->value < ((*stack_b)->next)->value)
 			rb(stack_b,data);
+		else
+			sb(stack_b,data);
+
 	}
 	if (!((*stack_b)->next))
 		pa(stack_b,stack_a,data);
+
 }

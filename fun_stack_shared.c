@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/25 18:20:49 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/27 10:25:43 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ void	rrr(t_data *data, t_list **stack_a, t_list **stack_b)
 	ft_putstr("rrr");
 }
 
+void	rrb_help(t_data *data)
+{
+	if (data->output)
+	{
+		if(ft_strcmp(data->output->out, "rra") == 0)
+			write(1,"rrr\n",4);
+		else
+		{
+			ft_putstr(data->output->out);
+			ft_putstr("rrb");
+		}
+		free(data->output);
+		data->output = NULL;
+	}
+	else
+		data->output = node_store("rrb");
+}
 
 void	rrb(t_list **stack,t_data *data)
 {
@@ -50,16 +67,35 @@ void	rrb(t_list **stack,t_data *data)
 		*stack = end_node;
 		free(*temp);
 		*temp = NULL;
-		if (data->output)
+		rrb_help(data);
+		// if (data->output)
+		// {
+		// 	ft_putstr(data->output->out);
+		// 	ft_putstr("rrb");
+		// 	free(data->output);
+		// 	data->output = NULL;
+		// }
+		// else
+		// 	data->output = node_store("rrb");
+	}
+}
+
+void	rra_help(t_data *data)
+{
+	if (data->output)
+	{
+		if(ft_strcmp(data->output->out, "rrb") == 0)
+			write(1,"rrr\n",4);
+		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("rrb");
-			free(data->output);
-			data->output = NULL;
+			ft_putstr("rra");
 		}
-		else
-			data->output = node_store("rrb");
+		free(data->output);
+		data->output = NULL;
 	}
+	else
+		data->output = node_store("rra");
 }
 
 void	rra(t_list **stack, t_data *data)
@@ -78,14 +114,15 @@ void	rra(t_list **stack, t_data *data)
 		*stack = end_node;
 		free(*temp);
 		*temp = NULL;
-		if (data->output)
-		{
-			ft_putstr(data->output->out);
-			ft_putstr("rra");
-			free(data->output);
-			data->output = NULL;
-		}
-		else
-			data->output = node_store("rra");
+		rra_help(data);
+		// if (data->output)
+		// {
+		// 	ft_putstr(data->output->out);
+		// 	ft_putstr("rra");
+		// 	free(data->output);
+		// 	data->output = NULL;
+		// }
+		// else
+		// 	data->output = node_store("rra");
 	}
 }

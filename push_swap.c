@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/26 20:19:46 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/27 16:07:33 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	main(int ac, char **av)
 	// print_stack(stack_b);
 	
 
-	printf("satck_b\n");
-	print_stack(stack_b);
+
 }
 
