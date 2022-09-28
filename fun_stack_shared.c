@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/27 10:25:43 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/28 22:28:43 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	rrb_help(t_data *data)
 	if (data->output)
 	{
 		if(ft_strcmp(data->output->out, "rra") == 0)
+		{
 			write(1,"rrr\n",4);
+		}
 		else
 		{
 			ft_putstr(data->output->out);
@@ -68,15 +70,6 @@ void	rrb(t_list **stack,t_data *data)
 		free(*temp);
 		*temp = NULL;
 		rrb_help(data);
-		// if (data->output)
-		// {
-		// 	ft_putstr(data->output->out);
-		// 	ft_putstr("rrb");
-		// 	free(data->output);
-		// 	data->output = NULL;
-		// }
-		// else
-		// 	data->output = node_store("rrb");
 	}
 }
 
@@ -85,10 +78,14 @@ void	rra_help(t_data *data)
 	if (data->output)
 	{
 		if(ft_strcmp(data->output->out, "rrb") == 0)
+		{
 			write(1,"rrr\n",4);
+
+		}
 		else
 		{
 			ft_putstr(data->output->out);
+			// printf("++++++++++++++++++++++++++++++++++yeeees\n");
 			ft_putstr("rra");
 		}
 		free(data->output);
@@ -115,14 +112,5 @@ void	rra(t_list **stack, t_data *data)
 		free(*temp);
 		*temp = NULL;
 		rra_help(data);
-		// if (data->output)
-		// {
-		// 	ft_putstr(data->output->out);
-		// 	ft_putstr("rra");
-		// 	free(data->output);
-		// 	data->output = NULL;
-		// }
-		// else
-		// 	data->output = node_store("rra");
 	}
 }
