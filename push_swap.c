@@ -6,12 +6,11 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/28 21:31:38 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:48:25 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	main(int ac, char **av)
 {
@@ -23,7 +22,7 @@ int	main(int ac, char **av)
 	
 	
 	data.nbr_node = 0;
-	data.output = NULL;
+	data.output = node_store("");
 	stack_a = NULL;
 	stack_b = NULL;
 	n = ac;
@@ -40,6 +39,7 @@ int	main(int ac, char **av)
 	// print_stack(stack_a);
 	// printf("\n\n\n");
 	// print_stack(stack_b);
+	
 	table = sort_stack_in_table(stack_a, data.nbr_node);
 	push_in_b(table, &data, &stack_a, &stack_b);
 	push_in_a(&data,&stack_b,&stack_a);
@@ -52,8 +52,6 @@ int	main(int ac, char **av)
 	// printf("stack_a\n");
 	// print_stack(stack_a);
 
-	
-	
 	
 	
 	

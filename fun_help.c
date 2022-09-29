@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:37:10 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 15:38:36 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 14:12:00 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_putstr(char *str)
 {
-	char	*nul;
+	char	*null;
 
-	nul = "(null)";
+	null = "(null)";
 	if (!str)
 	{
-		while (*nul)
-			write (1, nul++, 1);
+		while (*null)
+			write (1, null++, 1);
 	}
 	else
 	{

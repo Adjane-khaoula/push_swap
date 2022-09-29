@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 15:10:04 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:41:35 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,41 @@
 
 void	sb_help(t_data *data)
 {
-	
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "sa") == 0)
-			ft_putstr("ss");
+		{
+			write(1,"ss\n",4);
+			data->output->out = "";
+		}
 		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("sb");
+			data->output->out = "sb";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("sb");
 }
+
+// void	sb_help(t_data *data)
+// {
+	
+// 	if (data->output)
+// 	{
+// 		if(ft_strcmp(data->output->out, "sa") == 0)
+// 			ft_putstr("ss");
+// 		else
+// 		{
+// 			ft_putstr(data->output->out);
+// 			ft_putstr("sb");
+// 		}
+// 		free(data->output);
+// 		data->output = NULL;
+// 	}
+// 	else
+// 		data->output = node_store("sb");
+// }
 
 void	sb(t_list	**stack,t_data *data)
 {
@@ -54,35 +73,63 @@ void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data)
 		add_node(stack_b,node((*stack_a)->value));
 		*stack_a = (*stack_a)->next;
 		free(temp);
-		if (data->output)
+
+		if (ft_strcmp(data->output->out, "") != 0)
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("pb");
-			free(data->output);
-			data->output = NULL;
+			data->output->out = "pb";
 		}
 		else
 			data->output = node_store("pb");
+			
+		// if (data->output)
+		// {
+		// 	ft_putstr(data->output->out);
+		// 	ft_putstr("pb");
+		// 	free(data->output);
+		// 	data->output = NULL;
+		// }
+		// else
+		// 	data->output = node_store("pb");
 	}
 }
 
 void	rb_help(t_data *data)
 {
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "ra") == 0)
-			ft_putstr("rr");
+		{
+			write(1,"rr\n",3);
+			data->output->out = "";
+		}
 		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("rb");
+			data->output->out = "rb";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("rb");
 }
+
+// void	rb_help(t_data *data)
+// {
+// 	if (data->output)
+// 	{
+// 		if(ft_strcmp(data->output->out, "ra") == 0)
+// 			ft_putstr("rr");
+// 		else
+// 		{
+// 			ft_putstr(data->output->out);
+// 			ft_putstr("rb");
+// 		}
+// 		free(data->output);
+// 		data->output = NULL;
+// 	}
+// 	else
+// 		data->output = node_store("rb");
+// }
 
 void	rb(t_list **stack,t_data *data)
 {

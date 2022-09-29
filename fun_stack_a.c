@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 15:59:24 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:39:13 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,41 @@
 
 void	sa_help(t_data *data)
 {
-	
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "sb") == 0)
-			write(1,"ss\n",3);
+		{
+			write(1,"ss\n",4);
+			data->output->out = "";
+		}
 		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("sa");
+			data->output->out = "sa";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("sa");
 }
+
+// void	sa_help(t_data *data)
+// {
+	
+// 	if (data->output)
+// 	{
+// 		if(ft_strcmp(data->output->out, "sb") == 0)
+// 			write(1,"ss\n",3);
+// 		else
+// 		{
+// 			ft_putstr(data->output->out);
+// 			ft_putstr("sa");
+// 		}
+// 		free(data->output);
+// 		data->output = NULL;
+// 	}
+// 	else
+// 		data->output = node_store("sa");
+// }
 
 void	sa(t_list	**stack,t_data *data)
 {
@@ -55,35 +74,62 @@ void	pa(t_list	**stack_b, t_list	**stack_a,t_data *data)
 		*stack_b = (*stack_b)->next;
 		free(temp);
 		temp = NULL;
-		if (data->output)
+		if (ft_strcmp(data->output->out, "") != 0)
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("pa");
-			free(data->output);
-			data->output = NULL;
+			data->output->out = "pa";
 		}
 		else
 			data->output = node_store("pa");
+		
+		// if (data->output)
+		// {
+		// 	ft_putstr(data->output->out);
+		// 	ft_putstr("pa");
+		// 	free(data->output);
+		// 	data->output = NULL;
+		// }
+		// else
+		// 	data->output = node_store("pa");
 	}
 }
 
 void	ra_help(t_data *data)
 {
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "rb") == 0)
+		{
 			write(1,"rr\n",3);
+			data->output->out = "";
+		}
 		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("ra");
+			data->output->out = "ra";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("ra");
 }
+
+// void	ra_help(t_data *data)
+// {
+// 	if (data->output)
+// 	{
+// 		if(ft_strcmp(data->output->out, "rb") == 0)
+// 			write(1,"rr\n",3);
+// 		else
+// 		{
+// 			ft_putstr(data->output->out);
+// 			ft_putstr("ra");
+// 		}
+// 		free(data->output);
+// 		data->output = NULL;
+// 	}
+// 	else
+// 		data->output = node_store("ra");
+// }
 
 void	ra(t_list **stack,t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/28 22:28:43 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 15:30:23 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,42 @@ void	rrr(t_data *data, t_list **stack_a, t_list **stack_b)
 
 void	rrb_help(t_data *data)
 {
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "rra") == 0)
 		{
 			write(1,"rrr\n",4);
+			data->output->out = "";
 		}
 		else
 		{
 			ft_putstr(data->output->out);
-			ft_putstr("rrb");
+			data->output->out = "rrb";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("rrb");
 }
+
+// void	rrb_help(t_data *data)
+// {
+// 	if (data->output)
+// 	{
+// 		if(ft_strcmp(data->output->out, "rra") == 0)
+// 		{
+// 			write(1,"rrr\n",4);
+// 		}
+// 		else
+// 		{
+// 			ft_putstr(data->output->out);
+// 			ft_putstr("rrb");
+// 		}
+// 		free(data->output);
+// 		data->output = NULL;
+// 	}
+// 	else
+// 		data->output = node_store("rrb");
+// }
 
 void	rrb(t_list **stack,t_data *data)
 {
@@ -75,21 +94,18 @@ void	rrb(t_list **stack,t_data *data)
 
 void	rra_help(t_data *data)
 {
-	if (data->output)
+	if (ft_strcmp(data->output->out, "") != 0)
 	{
 		if(ft_strcmp(data->output->out, "rrb") == 0)
 		{
 			write(1,"rrr\n",4);
-
+			data->output->out = "";
 		}
 		else
 		{
 			ft_putstr(data->output->out);
-			// printf("++++++++++++++++++++++++++++++++++yeeees\n");
-			ft_putstr("rra");
+			data->output->out = "rra";
 		}
-		free(data->output);
-		data->output = NULL;
 	}
 	else
 		data->output = node_store("rra");
