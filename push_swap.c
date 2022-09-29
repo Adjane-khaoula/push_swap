@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 15:48:25 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 18:26:25 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	data.output = node_store("");
 	stack_a = NULL;
 	stack_b = NULL;
-	n = ac;
+	n = ac - 1;
 	if (ac-- > 1)
 	{
 		while(ac > 0)
@@ -39,10 +39,23 @@ int	main(int ac, char **av)
 	// print_stack(stack_a);
 	// printf("\n\n\n");
 	// print_stack(stack_b);
-	
-	table = sort_stack_in_table(stack_a, data.nbr_node);
-	push_in_b(table, &data, &stack_a, &stack_b);
-	push_in_a(&data,&stack_b,&stack_a);
+	if (n == 2)
+		sort_2_element(&data, &stack_a);
+	else if (n == 3)
+		sort_3_element(&data, &stack_a);
+	else
+	{
+		table = sort_stack_in_table(stack_a, data.nbr_node);
+		push_in_b(table, &data, &stack_a, &stack_b);
+		// printf("\n\n\n");
+		// printf("stack_b\n");
+		// print_stack(stack_b);
+		printf("\n\n\n");
+		printf("stack_a\n");
+		printf("\n\n\n");
+		print_stack(stack_a);
+		push_in_a(&data,&stack_b,&stack_a);
+	}
 	if (data.output)
 		ft_putstr(data.output->out);
 	// printf("\n\n\n");
@@ -50,7 +63,6 @@ int	main(int ac, char **av)
 	// print_stack(stack_b);
 	// printf("\n\n\n");
 	// printf("stack_a\n");
-	// print_stack(stack_a);
 
 	
 	

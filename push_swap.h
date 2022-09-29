@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/26 17:10:24 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/09/29 17:55:04 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	push_in_b_hlp(int *tab,t_data *data, t_list **stack_a, t_list **stack_b);
 void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a);
 
 
-void	sort_2_element(t_list **stack);
-void	sort_3_element(t_list **stack_a, t_list **stack_b);
+void	sort_2_element(t_data *data, t_list **stack);
+void	sort_3_element(t_data *data, t_list **stack_a);
 void	sort_4_element(t_list **stack_a, t_list **stack_b);
 void	sort_5_element(t_list **stack_a, t_list **stack_b);
 
