@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hp <hp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/04 18:24:52 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/05 00:07:17 by hp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,17 @@ int	main(int ac, char **av)
 		// printf("stack_a\n");
 		// print_stack(stack_a);
 		// printf("\n\n\n");
+		// write (1, "-------\n\n\n", 11);
+		
 		push_in_a(&data,&stack_b,&stack_a);
 	}
 	if (data.output)
 		ft_putstr(data.output->out);
-	printf("\n\n\n");
-	printf("stack_b\n");
-	print_stack(stack_b);
-	printf("\n\n\n");
-	print_stack(stack_a);
+	// printf("\n\n\n");
+	// printf("stack_b\n");
+	// print_stack(stack_b);
+	// printf("\n\n\n");
+	// print_stack(stack_a);
 
 	
 	

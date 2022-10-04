@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hp <hp@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:19:59 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/08 15:17:44 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/04 22:06:53 by hp               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,8 @@ char	*isnegatif(int n)
 
 char	*ft_itoa(int n)
 {
-	int		i;
-	int		m;
-	int		k;
 	char	*s;
 
-	i = lenbr(n);
-	m = n;
-	k = n;
 	if (n == -2147483648)
 	{
 		s = (char *)malloc(12);
