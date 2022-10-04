@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 15:30:23 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:40:59 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	rra(t_list **stack, t_data *data)
 		end_node = node((*temp)->value);
 		end_node->next = *stack;
 		*stack = end_node;
-		free(*temp);
+		// free(*temp);
 		*temp = NULL;
 		rra_help(data);
 	}

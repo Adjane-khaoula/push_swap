@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:40:53 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 20:27:51 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/04 18:24:52 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	main(int ac, char **av)
 	}
 	if (data.output)
 		ft_putstr(data.output->out);
-	// printf("\n\n\n");
-	// printf("stack_b\n");
-	// print_stack(stack_b);
-	// printf("\n\n\n");
-	// print_stack(stack_a);
+	printf("\n\n\n");
+	printf("stack_b\n");
+	print_stack(stack_b);
+	printf("\n\n\n");
+	print_stack(stack_a);
 
 	
 	
