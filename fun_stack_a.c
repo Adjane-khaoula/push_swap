@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 15:39:13 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 16:39:39 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sa_help(t_data *data)
 	{
 		if(ft_strcmp(data->output->out, "sb") == 0)
 		{
-			write(1,"ss\n",4);
+			write(1,"ss\n",3);
 			data->output->out = "";
 		}
 		else
@@ -28,27 +28,12 @@ void	sa_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("sa");
-}
+	}
 
-// void	sa_help(t_data *data)
-// {
-	
-// 	if (data->output)
-// 	{
-// 		if(ft_strcmp(data->output->out, "sb") == 0)
-// 			write(1,"ss\n",3);
-// 		else
-// 		{
-// 			ft_putstr(data->output->out);
-// 			ft_putstr("sa");
-// 		}
-// 		free(data->output);
-// 		data->output = NULL;
-// 	}
-// 	else
-// 		data->output = node_store("sa");
-// }
+}
 
 void	sa(t_list	**stack,t_data *data)
 {
@@ -80,17 +65,10 @@ void	pa(t_list	**stack_b, t_list	**stack_a,t_data *data)
 			data->output->out = "pa";
 		}
 		else
+		{
+			free(data->output);
 			data->output = node_store("pa");
-		
-		// if (data->output)
-		// {
-		// 	ft_putstr(data->output->out);
-		// 	ft_putstr("pa");
-		// 	free(data->output);
-		// 	data->output = NULL;
-		// }
-		// else
-		// 	data->output = node_store("pa");
+		}
 	}
 }
 
@@ -110,26 +88,11 @@ void	ra_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("ra");
+	}
 }
-
-// void	ra_help(t_data *data)
-// {
-// 	if (data->output)
-// 	{
-// 		if(ft_strcmp(data->output->out, "rb") == 0)
-// 			write(1,"rr\n",3);
-// 		else
-// 		{
-// 			ft_putstr(data->output->out);
-// 			ft_putstr("ra");
-// 		}
-// 		free(data->output);
-// 		data->output = NULL;
-// 	}
-// 	else
-// 		data->output = node_store("ra");
-// }
 
 void	ra(t_list **stack,t_data *data)
 {

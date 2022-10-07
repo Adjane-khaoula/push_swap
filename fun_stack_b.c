@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 20:52:36 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 16:45:04 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	sb_help(t_data *data)
 	{
 		if(ft_strcmp(data->output->out, "sa") == 0)
 		{
-			write(1,"ss\n",4);
-			data->output->out = "";
+			write(1,"ss\n",3);
+			data->output->out = "";;
 		}
 		else
 		{
@@ -28,7 +28,10 @@ void	sb_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("sb");
+	}
 }
 
 void	sb(t_list	**stack,t_data *data)
@@ -54,14 +57,16 @@ void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data)
 		add_node(stack_b,node((*stack_a)->value));
 		*stack_a = (*stack_a)->next;
 		free(temp);
-
 		if (ft_strcmp(data->output->out, "") != 0)
 		{
 			ft_putstr(data->output->out);
 			data->output->out = "pb";
 		}
 		else
+		{
+			free(data->output);
 			data->output = node_store("pb");
+		}
 	}
 }
 
@@ -81,7 +86,10 @@ void	rb_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("rb");
+	}
 }
 
 void	rb(t_list **stack,t_data *data)

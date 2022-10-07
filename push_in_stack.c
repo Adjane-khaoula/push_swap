@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:37:59 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/06 13:00:33 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 16:07:42 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,72 +61,112 @@ void	push_in_b(int *table,t_data *data, t_list **stack_a, t_list **stack_b)
 	}
 }
 
+void	push_in_a_help(int *table, t_data *data,t_list **stack_b, t_list **stack_a)
+{
+	t_list	*tmp;
+	int		last_value;
+	int		i;
 
-void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
+	i = 0;
+	tmp = *stack_a;
+	last_value = *(table + (data->nbr_node - 1));
+	while (*stack_a && tmp->next)
+		tmp = tmp->next;
+
+	if ((*stack_b)->value < tmp->value && tmp->value != last_value)
+	{
+		while ((*stack_b)->value < tmp->value && tmp->value != last_value)
+		{
+			rra(stack_a,data);
+			tmp = *stack_a;
+			while (tmp->next)
+				tmp = tmp->next;
+		}
+		pa(stack_b,stack_a,data);
+	}
+	else if (((*stack_b)->value > (*stack_a)->value))
+	{
+		while (((*stack_b)->value > (*stack_a)->value))
+		{
+			if(((*stack_b)->value > (*stack_a)->value ) && (*stack_b)->value == ((*stack_a)->value) + 1)
+			{
+				pa(stack_b,stack_a,data);
+				sa(stack_a,data);
+				i++;
+				break ;
+			}
+			else
+				ra(stack_a,data);
+		}
+		if (i != 1)
+			pa(stack_b,stack_a,data);
+	}
+	else 
+		pa(stack_b,stack_a,data);
+
+}
+
+void	push_in_a(int *table, t_data *data,t_list **stack_b, t_list **stack_a)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
 	int		last_value;
+	// int		i;
 	
-	last_value = (*stack_a)->value;
-	while (*stack_b && (*stack_b)->next && (*stack_b)->next->next)
+	// // last_value = data->nbr_node;
+	// last_value = (*stack_a)->value;
+	last_value = *(table + (data->nbr_node - 1));
+	while ((*stack_b)&& (*stack_b)->next && (*stack_b)->next->next)
 	{
 		tmp1 = *stack_b;
-		tmp2 = *stack_a;
-
 		while (tmp1->next)
 			tmp1 = tmp1->next;
-		while (*stack_a && tmp2->next)
-			tmp2 = tmp2->next;
-		if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > ((*stack_b)->next)->value)
-			|| ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
-			&& (*stack_b)->next->value > (*stack_b)->next->next->value))
-		{
-			if ( ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
-				&& (*stack_b)->next->value > (*stack_b)->next->next->value))
-				sb(stack_b,data);
-			if ((*stack_b)->value < tmp1->value)
-				rrb(stack_b,data);
-			
-			if((*stack_b)->value > (*stack_a)->value && (*stack_b)->value < (*stack_b)->next->value && (tmp2->value == last_value))
+		if ((*stack_b)->value < tmp1->value)
+		{	
+			while ((*stack_b)->value < tmp1->value)
 			{
-				pa(stack_b,stack_a,data);
-				sa(stack_a,data);
-				printf("cackjxkjj");
+				rrb(stack_b,data);
+				tmp1 = *stack_b;
+				while (tmp1->next)
+				tmp1 = tmp1->next;
 			}
-			else
-			{	
-				while (tmp2->value != last_value && (*stack_b)->value < tmp2->value )
-				{
-					rra(stack_a,data);
-					tmp2 = *stack_a;
-					while (*stack_a && tmp2->next)
-						tmp2 = tmp2->next;
-				}
-				while (((*stack_b)->value > (*stack_a)->value))
-					ra(stack_a,data);
-				pa(stack_b,stack_a,data);
-			}
+			push_in_a_help(table, data,stack_b,stack_a);
+		}
+		else if ((*stack_b)->value > (*stack_b)->next->value)
+			push_in_a_help(table, data,stack_b,stack_a);
+		else if ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value)
+		{
+				sb(stack_b,data);
+				push_in_a_help(table, data,stack_b,stack_a);
 		}
 		else
-			rb(stack_b,data);
+		{
+				rb(stack_b,data);
+				tmp1 = tmp1->next;
+		}
+	
 	}
+	tmp2 = *stack_a;
+	while (tmp2->next)
+		tmp2 = tmp2->next;
+
 	while (tmp2->value != last_value)
 	{
 		rra(stack_a,data);
 		tmp2 = *stack_a;
-		while (*stack_a && tmp2->next)
+		while (tmp2->next)
 			tmp2 = tmp2->next;
 	}
-	if ((*stack_b)->next)
+	while ((*stack_b) && ((*stack_b)->next))
 	{
 		if ((*stack_b)->value < ((*stack_b)->next->value))
 		{
 			sb(stack_b,data);
 			pa(stack_b,stack_a,data);
 		}
-	}
 		pa(stack_b,stack_a,data);
+	}
+	pa(stack_b,stack_a,data);
 }
 
 
@@ -135,62 +175,6 @@ void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 
 
 
-// void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
-// {
-// 	t_list	*tmp1;
-// 	t_list	*tmp2;
-// 	int		last_value;
-	
-// 	last_value = (*stack_a)->value;
-// 	while (*stack_b && (*stack_b)->next && (*stack_b)->next->next)
-// 	{
-// 		tmp1 = *stack_b;
-// 		tmp2 = *stack_a;
-
-// 		while (tmp1->next)
-// 			tmp1 = tmp1->next;
-// 		while (*stack_a && tmp2->next)
-// 			tmp2 = tmp2->next;
-// 		if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > ((*stack_b)->next)->value)
-// 			|| ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
-// 			&& (*stack_b)->next->value > (*stack_b)->next->next->value))
-// 		{
-// 			if ( ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
-// 				&& (*stack_b)->next->value > (*stack_b)->next->next->value))
-// 				sb(stack_b,data);
-// 			if ((*stack_b)->value < tmp1->value)
-// 				rrb(stack_b,data);
-// 			while (tmp2->value != last_value && (*stack_b)->value < tmp2->value )
-// 			{
-// 				rra(stack_a,data);
-// 				tmp2 = *stack_a;
-// 				while (*stack_a && tmp2->next)
-// 					tmp2 = tmp2->next;
-// 			}
-// 			while (((*stack_b)->value > (*stack_a)->value))
-// 				ra(stack_a,data);
-// 			pa(stack_b,stack_a,data);
-// 		}
-// 		else
-// 			rb(stack_b,data);
-// 	}
-// 	while (tmp2->value != last_value)
-// 	{
-// 		rra(stack_a,data);
-// 		tmp2 = *stack_a;
-// 		while (*stack_a && tmp2->next)
-// 			tmp2 = tmp2->next;
-// 	}
-// 	if ((*stack_b)->next)
-// 	{
-// 		if ((*stack_b)->value < ((*stack_b)->next->value))
-// 		{
-// 			sb(stack_b,data);
-// 			pa(stack_b,stack_a,data);
-// 		}
-// 	}
-// 		pa(stack_b,stack_a,data);
-// }
 
 
 
@@ -199,205 +183,48 @@ void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
 
 
 
+	// if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > ((*stack_b)->next)->value)
+		// 	|| ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
+		// 	&& (*stack_b)->next->value > (*stack_b)->next->next->value))
+		// {
+		// 	if ( ((*stack_b)->value < (*stack_b)->next->value && (*stack_b)->value > (*stack_b)->next->next->value
+		// 		&& (*stack_b)->next->value > (*stack_b)->next->next->value))
+		// 		sb(stack_b,data);
+		// 	if ((*stack_b)->value < tmp1->value)
+		// 		rrb(stack_b,data);
+		// 	if (tmp2->value != last_value && (*stack_b)->value < tmp2->value )
+		// 	{	
+		// 		while (tmp2->value != last_value && (*stack_b)->value < tmp2->value )
+		// 		{
+		// 			rra(stack_a,data);
+		// 			tmp2 = *stack_a;
+		// 			while (*stack_a && tmp2->next)
+		// 			tmp2 = tmp2->next;
+		// 		}
+		// 			pa(stack_b,stack_a,data);	
+		// 	}
+		// 	else 
+		// 	{	
+		// 		i = 0;
+		// 		while (((*stack_b)->value > (*stack_a)->value))
+		// 		{
+		// 			if(((*stack_b)->value > (*stack_a)->value ) && (*stack_b)->value == ((*stack_a)->value) + 1)
+		// 			{
+		// 				pa(stack_b,stack_a,data);
+		// 				sa(stack_a,data);
+		// 				i++;
+		// 				break ;
+		// 			}
+		// 			else
+		// 				ra(stack_a,data);
+		// 		}
+		// 		// printf("qqknk %s\n", data->output->out);
+		// 		// if (ft_strcmp(data->output->out,"ra") == 0)
+		// 			// pa(stack_b,stack_a,data);	
+		// 		if (i != 1)
+		// 			pa(stack_b,stack_a,data);	
 
-// void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
-// {
-// 	t_list	*tmp1;
-// 	t_list	*tmp2;
-// 	int		last_value;
-	
-// 	last_value = (*stack_a)->value;
-// 	tmp1 = *stack_b;
-// 	tmp2 = *stack_a;
-// 	while (tmp1->next)
-// 		tmp1 = tmp1->next;
-// 	while (*stack_a && tmp2->next)
-// 			tmp2 = tmp2->next;
-// 	printf("dqd3f4g43wsrgf3wfa\n");
-// 	while (*stack_b && (*stack_b)->next)
-// 	{
-// 		// if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > ((*stack_b)->next)->value))
-// 		// {
-// 		while ((*stack_b)->value < tmp1->value)
-// 		{
-// 			rrb(stack_b,data);
-// 			tmp1 = *stack_b;
-// 			while (*stack_b && tmp1->next)
-// 				tmp1 = tmp1->next;
-// 		}
-// 		while (tmp2->value != last_value && (*stack_b)->value < tmp2->value )
-// 		{
-// 			rra(stack_a,data);
-// 			tmp2 = *stack_a;
-// 			while (*stack_a && tmp2->next)
-// 				tmp2 = tmp2->next;
-// 		}
-// 		while (((*stack_b)->value > (*stack_a)->value))
-// 			ra(stack_a,data);
-// 		// printf("(*srack_b)->value = %d\n", (*stack_b)->val/ue);
-// 		if ((*stack_b)->value < (*stack_a)->value && (*stack_b)->value > tmp2->value
-// 			&& tmp2->value != last_value )
-// 			pa(stack_b,stack_a,data);
-// 		// }
-// 		if ((*stack_b)->value < ((*stack_b)->next)->value)
-// 			rb(stack_b,data);
-// 	}
-// 	while (tmp2->value != last_value)
-// 	{
-// 		rra(stack_a,data);
-// 		tmp2 = *stack_a;
-// 		while (*stack_a && tmp2->next)
-// 			tmp2 = tmp2->next;
-// 	}
-// 	if (!((*stack_b)->next))
-// 		pa(stack_b,stack_a,data);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
-// // {
-// // 	t_list	*tmp1;
-// // 	t_list	*tmp2;
-// // 	int		last_value;
-	
-// // 	last_value = (*stack_a)->value;
-// // 	while (*stack_b && (*stack_b)->next)
-// // 	{
-// // 		tmp1 = *stack_b;
-// // 		tmp2 = *stack_a;
-
-// // 		while (tmp1->next)
-// // 			tmp1 = tmp1->next;
-// // 		if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > tmp1->value && (*stack_b)->value > ((*stack_b)->next)->value))
-// // 		{
-// // 			if ((*stack_b)->value < tmp1->value)
-// // 				rrb(stack_b,data);
-// // 			// while (tmp2->next)
-// // 			// 	tmp2 = tmp2->next;
-// // 				while (tmp2 && tmp2->value != last_value && (*stack_b)->value < tmp2->value )
-// // 				{
-// // 					rra(stack_a,data);
-// // 					tmp2 = *stack_a;
-// // 					while (tmp2->next)
-// // 						tmp2 = tmp2->next;
-// // 				}
-// // 				while (((*stack_b)->value > (*stack_a)->value))
-// // 					ra(stack_a,data);
-// // 				pa(stack_b,stack_a,data);
-// // 		}
-// // 		else if ((*stack_b)->value < (((*stack_b)->next)->next)->value && (*stack_b)->value < ((*stack_b)->next)->value)
-// // 			rb(stack_b,data);
-// // 		else
-// // 			sb(stack_b,data);
-
-// // 	}
-// // 	if (!((*stack_b)->next))
-// // 		pa(stack_b,stack_a,data);
-// // }
-
-// void	push_in_a(t_data *data,t_list **stack_b, t_list **stack_a)
-// {
-// 	t_list	*tmp1;
-// 	t_list	*tmp2;
-// 	int		last_value;
-	
-// 	last_value = (*stack_a)->value;
-// 	while (*stack_b && (*stack_b)->next)
-// 	{
-// 		tmp1 = *stack_b;
-// 		tmp2 = *stack_a;
-
-// 		while (tmp1->next)
-// 			tmp1 = tmp1->next;
-// 		while (tmp2->next)
-// 			tmp2 = tmp2->next;
-
-// 		if (((*stack_b)->value < ((*stack_b)->next)->value && (*stack_b)->value < (((*stack_b)->next)->next)->value ) || 
-// 					(((*stack_b)->value < ((*stack_b)->next)->value) && (*stack_b)->value > tmp1->value))
-// 		{
-// 			printf("+++++++++++++");
-// 			rb(stack_b,data);
-// 		}
-// 		else if (((*stack_b)->value > tmp1->value && (*stack_b)->value > ((*stack_b)->next)->value) || (*stack_b)->value < tmp1->value)
-// 		{
-// 			if ((*stack_b)->value < tmp1->value)
-// 			{
-// 				rrb(stack_b,data);
-// 				tmp1 = *stack_b;
-// 				while (tmp1->next)
-// 				tmp1 = tmp1->next;
-// 			}
-				
-// 			if (tmp2->value == (*stack_a)->value - 1)
-// 			{
-// 				while (tmp2->value == (*stack_a)->value - 1)
-// 				{
-// 					rra(stack_a,data);
-// 					tmp2 = *stack_a;
-// 					while (tmp2->next)
-// 						tmp2 = tmp2->next;
-// 				}
-// 			}
-// 			else if ((*stack_b)->value != ((*stack_a)->value - 1) && ((*stack_b)->value == tmp2->value + 1 || (tmp2)->value == last_value))
-// 			{
-// 				pa(stack_b,stack_a,data);
-// 				ra(stack_a,data);
-// 			}
-// 			else
-// 				pa(stack_b,stack_a,data);
-// 		}
-// 		// else if (((*stack_b)->value < (((*stack_b)->next)->next)->value && (*stack_b)->value < ((*stack_b)->next)->value) || 
-// 		// 			(((*stack_b)->value < ((*stack_b)->next)->value) && (*stack_b)->value > tmp1->value))
-// 		// 	rb(stack_b,data);
-// 		else
-// 			sb(stack_b,data);
-		
-
-	
-// 		// if ((*stack_b)->value < tmp1->value || ((*stack_b)->value > tmp1->value && (*stack_b)->value > ((*stack_b)->next)->value))
-// 		// {
-// 		// 	if ((*stack_b)->value < tmp1->value)
-// 		// 		rrb(stack_b,data);
-// 		// 	while (tmp2->next)
-// 		// 		tmp2 = tmp2->next;
-			
-// 		// 	while (tmp2 && tmp2->value != last_value && (*stack_b)->value < tmp2->value )
-// 		// 	{
-// 		// 		rra(stack_a,data);
-// 		// 		tmp2 = *stack_a;
-// 		// 		while (tmp2->next)
-// 		// 			tmp2 = tmp2->next;
-// 		// 	}
-// 		// 	while (((*stack_b)->value > (*stack_a)->value))
-// 		// 		ra(stack_a,data);
-// 		// 	pa(stack_b,stack_a,data);
-// 		// }
-// 		// else if ((*stack_b)->value < (((*stack_b)->next)->next)->value && (*stack_b)->value < ((*stack_b)->next)->value)
-// 		// 	rb(stack_b,data);
-// 		// else
-// 		// 	sb(stack_b,data);
-
-// 	}
-// 	if (!((*stack_b)->next))
-// 		pa(stack_b,stack_a,data);
-// }
+		// 	}
+		// }
+		// else
+		// 	rb(stack_b,data);

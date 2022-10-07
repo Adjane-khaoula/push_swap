@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:43:55 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/04 18:40:59 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 16:45:33 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,11 @@ void	rrb_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("rrb");
+	}
 }
-
-// void	rrb_help(t_data *data)
-// {
-// 	if (data->output)
-// 	{
-// 		if(ft_strcmp(data->output->out, "rra") == 0)
-// 		{
-// 			write(1,"rrr\n",4);
-// 		}
-// 		else
-// 		{
-// 			ft_putstr(data->output->out);
-// 			ft_putstr("rrb");
-// 		}
-// 		free(data->output);
-// 		data->output = NULL;
-// 	}
-// 	else
-// 		data->output = node_store("rrb");
-// }
 
 void	rrb(t_list **stack,t_data *data)
 {
@@ -108,7 +91,10 @@ void	rra_help(t_data *data)
 		}
 	}
 	else
+	{
+		free(data->output);
 		data->output = node_store("rra");
+	}
 }
 
 void	rra(t_list **stack, t_data *data)
@@ -125,7 +111,7 @@ void	rra(t_list **stack, t_data *data)
 		end_node = node((*temp)->value);
 		end_node->next = *stack;
 		*stack = end_node;
-		// free(*temp);
+		free(*temp);
 		*temp = NULL;
 		rra_help(data);
 	}

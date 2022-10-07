@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:38:07 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/06 12:58:41 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 18:41:21 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ int	main(int ac, char **av)
 			data.nbr_node++;
 		}
 	}
-	
-	// printf("stack_a\n");
-	// print_stack(stack_a);
-	// printf("\n\n\n");
-	// print_stack(stack_b);
 	if (n == 2)
 		sort_2_element(&data, &stack_a);
 	else if (n == 3)
 		sort_3_element(&data, &stack_a);
+	else if (n == 5)
+		sort_5_element(&data, &stack_a, &stack_b);
 	else
 	{
 		table = sort_stack_in_table(stack_a, data.nbr_node);
@@ -59,58 +56,18 @@ int	main(int ac, char **av)
 		// printf("\n\n\n");
 		// write (1, "-------\n\n\n", 11);
 		
-		push_in_a(&data,&stack_b,&stack_a);
+		push_in_a(table, &data,&stack_b,&stack_a);
 	}
 	if (data.output)
 		ft_putstr(data.output->out);
+	// system("leaks push_swap");
 	// printf("\n\n\n");
 	// printf("stack_b\n");
 	// print_stack(stack_b);
 	// printf("\n\n\n");
 	// print_stack(stack_a);
-
-	
-	
-	
-	
-	
-	
-	
-	
-	// ra(&stack_a,&data);
-	// // print_stack(stack_a);
-	
-	// ra(&stack_a,&data);
-	
-	// pb(&stack_a,&stack_b,&data);
-	// pb(&stack_a,&stack_b,&data);
-	// rb(&stack_b,&data);
-	// ra(&stack_a,&data);
-	// // printf("\n\n\n");
-	
-	// sb(&stack_b,&data);
-	// // print_stack(stack_a);
-	// // printf("\n\n\n");
-	
-	// sa(&stack_a,&data);
-	// sb(&stack_b,&data);
-	// sa(&stack_a,&data);
-	// // print_stack(stack_a);
-	// // printf("\n\n\n");
-	
-	// sa(&stack_a,&data);
-	// ra(&stack_a,&data);
-	// pb(&stack_a,&stack_b,&data);
-	// pb(&stack_a,&stack_b,&data);
-	// pa(&stack_b,&stack_a,&data);
-	// pa(&stack_b,&stack_a,&data);
-	// pb(&stack_a,&stack_b,&data);
-	// rb(&stack_b,&data);
-	// print_stack(stack_a);
-	// printf("\n\n\n");
-	// print_stack(stack_b);
-	
-
+	// while (1)
+	// 	;
 
 }
 

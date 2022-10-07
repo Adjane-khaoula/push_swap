@@ -40,24 +40,55 @@ void	sort_3_element(t_data *data, t_list **stack_a)
 		sort_2_element(data, stack_a);
 }
 
-// void	sort_4_element(t_list **stack_a, t_list **stack_b)
-// {
-// 	push(stack_a,stack_b);
-// 	sort_3_element(stack_a, stack_b);
-// 	push(stack_b,stack_a);
-// 	if ((*stack_a)->value > (*stack_a)->next->value)
-// 	{
-// 		swap(stack_a);
-// 		push(stack_a,stack_b);
-// 		sort_3_element(stack_a, stack_b);
-// 		push(stack_b,stack_a);
-// 	}
-// }
+void	sort_5_element(t_data *data, t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp;
+	int		last_value;
 
-// void	push_in_b(t_list **stack_a, t_list **stack_b)
-// {
-// 	t_list	*temp;
-	
-// 	temp = NULL;
-	
-// }
+	pb(stack_a, stack_b, data);
+	pb(stack_a, stack_b, data);
+	sort_3_element(data, stack_a);
+	tmp = *stack_a;
+	while (tmp->next)
+		tmp = tmp->next;
+	last_value = tmp->value;
+	while((*stack_b))
+	{
+		tmp = *stack_a;
+		while (tmp->next)
+			tmp = tmp->next;
+		if ((*stack_b)->value > tmp->value)
+		{
+			pb(stack_b, stack_a, data);
+			ra(stack_a, data);
+			last_value = tmp->next->value;
+		}
+		else if ((*stack_b)->value > (*stack_a)->value)
+		{
+			while((*stack_b)->value > (*stack_a)->value)
+			{
+				ra(stack_a, data);
+				tmp = tmp->next;
+			}
+			pb(stack_b, stack_a, data);
+		}
+		else
+		{
+			while((*stack_b)->value < tmp->value && tmp->value != last_value)
+			{
+				rra(stack_a, data);
+				tmp = *stack_a;
+				while (tmp->next)
+					tmp = tmp->next;
+			}
+			pb(stack_b, stack_a, data);
+		}
+	}
+	while (tmp->value !=last_value)
+	{
+		rra(stack_a, data);
+		tmp = *stack_a;
+		while (tmp->next)
+			tmp = tmp->next;
+	}
+}
