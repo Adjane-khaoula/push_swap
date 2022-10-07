@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:38:07 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/07 18:41:21 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/07 22:50:23 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	main(int ac, char **av)
 	else if (n == 3)
 		sort_3_element(&data, &stack_a);
 	else if (n == 5)
-		sort_5_element(&data, &stack_a, &stack_b);
+	{
+		table = sort_stack_in_table(stack_a, data.nbr_node);
+		sort_5_element(table, &data, &stack_a, &stack_b);
+	}
 	else
 	{
 		table = sort_stack_in_table(stack_a, data.nbr_node);
@@ -61,11 +64,11 @@ int	main(int ac, char **av)
 	if (data.output)
 		ft_putstr(data.output->out);
 	// system("leaks push_swap");
-	// printf("\n\n\n");
-	// printf("stack_b\n");
-	// print_stack(stack_b);
-	// printf("\n\n\n");
-	// print_stack(stack_a);
+	printf("\n\n\n");
+	printf("stack_b\n");
+	print_stack(stack_b);
+	printf("\n\n\n");
+	print_stack(stack_a);
 	// while (1)
 	// 	;
 
