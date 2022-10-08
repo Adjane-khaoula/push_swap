@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 11:37:59 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/07 22:53:01 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/08 11:22:13 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,7 @@ void	push_in_a(int *table, t_data *data,t_list **stack_b, t_list **stack_a)
 	t_list	*tmp1;
 	t_list	*tmp2;
 	int		last_value;
-	// int		i;
-	
-	// // last_value = data->nbr_node;
-	// last_value = (*stack_a)->value;
+
 	last_value = *(table + (data->nbr_node - 1));
 	while ((*stack_b)&& (*stack_b)->next && (*stack_b)->next->next)
 	{
@@ -126,13 +123,13 @@ void	push_in_a(int *table, t_data *data,t_list **stack_b, t_list **stack_a)
 		while (tmp1->next)
 			tmp1 = tmp1->next;
 		if ((*stack_b)->value < tmp1->value)
-		{	
+		{
 			while ((*stack_b)->value < tmp1->value)
 			{
 				rrb(stack_b,data);
 				tmp1 = *stack_b;
 				while (tmp1->next)
-				tmp1 = tmp1->next;
+					tmp1 = tmp1->next;
 			}
 			push_in_a_help(table, data,stack_b,stack_a);
 		}
@@ -148,7 +145,6 @@ void	push_in_a(int *table, t_data *data,t_list **stack_b, t_list **stack_a)
 				rb(stack_b,data);
 				tmp1 = tmp1->next;
 		}
-	
 	}
 	tmp2 = *stack_a;
 	while (tmp2->next)

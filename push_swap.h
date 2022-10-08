@@ -6,16 +6,16 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/07 21:09:48 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/08 18:31:37 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include<stdlib.h>
-# include<stdio.h>
-# include<unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
 
 typedef struct	s_list
 {
@@ -35,7 +35,8 @@ typedef struct	s_data
 
 } t_data;
 
-int		ft_atoi(const char	*str);
+int		ft_atoi(char *str);
+void	ft_error();
 char	*ft_itoa(int n);
 int		ft_strlen(const char *str);
 void	ft_putstr(char *str);
@@ -75,7 +76,6 @@ void	push_in_a(int *table, t_data *data,t_list **stack_b, t_list **stack_a);
 
 void	sort_2_element(t_data *data, t_list **stack);
 void	sort_3_element(t_data *data, t_list **stack_a);
-void	sort_4_element(t_list **stack_a, t_list **stack_b);
 void	sort_5_element(int *table, t_data *data, t_list **stack_a, t_list **stack_b);
 
 #endif

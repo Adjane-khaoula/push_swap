@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:37:10 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/29 14:12:00 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/08 18:32:05 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,42 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char	*str)
+int	ft_atoi_help(char *str, unsigned int cmp, int sign)
 {
-	unsigned int	cmp;
-	int				n;
-
-	cmp = 0;
-	n = 1;
-	while (*(str))
+	while (*str)
 	{
-		while ((*str >= 9 && *str <= 13) || *str == ' ')
+		while (*str && ((*str >= 9 && *str <= 13) || *str == ' '))
 			str++;
 		if (*str == '+' || *str == '-')
 		{
 			if (*str++ == '-')
-				n = -1;
+				sign = -1;
 		}
-		while (*str >= '0' && *str <= '9')
-			cmp = (cmp * 10) + (*str++ - '0');
-		if (*str < 0 || *str > 9 || (n > 0 && cmp > 2147483647)
-				|| (n < 0 && cmp > 2147483648))
+		if (*str && *str >= '0' && *str <= '9')
 		{
-			ft_putstr("Error");
-			exit(0);
+			while (*str && *str >= '0' && *str <= '9')
+			{
+				cmp = (cmp * 10) + (*str++ - '0');
+				if ((sign > 0 && cmp > 2147483647)|| (sign < 0 && (cmp > 2147483648)))
+					ft_error();
+			}
 		}
-		return (n * cmp);
+		else
+			ft_error();
 	}
+	return (sign * cmp);
+}
+
+int	ft_atoi(char *str)
+{
+	unsigned int cmp;
+	int	sign;
+
+	cmp = 0;
+	sign = 1;
+	if (ft_strlen(str) == 1 && (*str == '+' || *str == '-'))
+		ft_error();
+	else
+		return(ft_atoi_help(str, cmp, sign));
 	return (0);
 }
