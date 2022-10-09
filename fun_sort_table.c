@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_sort_table.c                                       :+:      :+:    :+:   */
+/*   fun_sort_table.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 11:05:17 by kadjane           #+#    #+#             */
-/*   Updated: 2022/09/21 15:32:54 by kadjane          ###   ########.fr       */
+/*   Created: 2022/10/09 00:28:37 by kadjane           #+#    #+#             */
+/*   Updated: 2022/10/09 03:56:36 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap_element(int **tab, int nbr_node)
 {
 	int	tmp;
 	int	*tab_tmp;
-	
+
 	tab_tmp = *tab;
 	while (--nbr_node)
 	{
@@ -43,7 +43,7 @@ int	table_is_sorted(int **table, int nbr_node)
 			i++;
 		tab_tmp++;
 	}
-	return i;
+	return (i);
 }
 
 int	*sort_stack_in_table(t_list	*stack_a, int nbr_node)
@@ -63,7 +63,7 @@ int	*sort_stack_in_table(t_list	*stack_a, int nbr_node)
 	}
 	while (i)
 	{
-		swap_element(&tab,nbr_node);
+		swap_element(&tab, nbr_node);
 		i = table_is_sorted(&tab, nbr_node);
 	}
 	return (tab);

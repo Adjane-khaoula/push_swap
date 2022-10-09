@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 17:44:04 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/07 16:45:04 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/09 00:37:47 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	sb_help(t_data *data)
 {
 	if (ft_strcmp(data->output->out, "") != 0)
 	{
-		if(ft_strcmp(data->output->out, "sa") == 0)
+		if (ft_strcmp(data->output->out, "sa") == 0)
 		{
-			write(1,"ss\n",3);
-			data->output->out = "";;
+			write(1, "ss\n", 3);
+			data->output->out = "";
 		}
 		else
 		{
@@ -34,11 +34,11 @@ void	sb_help(t_data *data)
 	}
 }
 
-void	sb(t_list	**stack,t_data *data)
+void	sb(t_list **stack, t_data *data)
 {
 	int	first_data;
 
-	if((*stack) && (*stack)->next)
+	if ((*stack) && (*stack)->next)
 	{
 		first_data = (*stack)->value;
 		(*stack)->value = (*stack)->next->value;
@@ -47,14 +47,14 @@ void	sb(t_list	**stack,t_data *data)
 	}
 }
 
-void	pb(t_list	**stack_a, t_list	**stack_b,t_data *data)
+void	pb(t_list **stack_a, t_list **stack_b, t_data *data)
 {
 	t_list	*temp;
-	
-	if(*stack_a)
+
+	if (*stack_a)
 	{
 		temp = *stack_a;
-		add_node(stack_b,node((*stack_a)->value));
+		add_node(stack_b, node((*stack_a)->value));
 		*stack_a = (*stack_a)->next;
 		free(temp);
 		if (ft_strcmp(data->output->out, "") != 0)
@@ -74,9 +74,9 @@ void	rb_help(t_data *data)
 {
 	if (ft_strcmp(data->output->out, "") != 0)
 	{
-		if(ft_strcmp(data->output->out, "ra") == 0)
+		if (ft_strcmp(data->output->out, "ra") == 0)
 		{
-			write(1,"rr\n",3);
+			write(1, "rr\n", 3);
 			data->output->out = "";
 		}
 		else
@@ -92,19 +92,18 @@ void	rb_help(t_data *data)
 	}
 }
 
-void	rb(t_list **stack,t_data *data)
+void	rb(t_list **stack, t_data *data)
 {
 	t_list	*temp_1;
 	t_list	*temp_2;
 	t_list	*first_node;
-	
+
 	temp_1 = *stack;
 	temp_2 = *stack;
-	
-	if(*stack && (*stack)->next)
+	if (*stack && (*stack)->next)
 	{
 		first_node = node((*stack)->value);
-		while(temp_1->next)
+		while (temp_1->next)
 			temp_1 = temp_1->next;
 		temp_1->next = first_node;
 		*stack = (*stack)->next;

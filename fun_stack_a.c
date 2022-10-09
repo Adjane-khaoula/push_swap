@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 11:51:51 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/07 16:39:39 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/09 00:34:19 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sa_help(t_data *data)
 {
 	if (ft_strcmp(data->output->out, "") != 0)
 	{
-		if(ft_strcmp(data->output->out, "sb") == 0)
+		if (ft_strcmp(data->output->out, "sb") == 0)
 		{
-			write(1,"ss\n",3);
+			write(1, "ss\n", 3);
 			data->output->out = "";
 		}
 		else
@@ -32,14 +32,13 @@ void	sa_help(t_data *data)
 		free(data->output);
 		data->output = node_store("sa");
 	}
-
 }
 
-void	sa(t_list	**stack,t_data *data)
+void	sa(t_list **stack, t_data *data)
 {
 	int	first_data;
 
-	if((*stack) && (*stack)->next  )
+	if ((*stack) && (*stack)->next)
 	{
 		first_data = (*stack)->value;
 		(*stack)->value = (*stack)->next->value;
@@ -48,14 +47,14 @@ void	sa(t_list	**stack,t_data *data)
 	}
 }
 
-void	pa(t_list	**stack_b, t_list	**stack_a,t_data *data)
+void	pa(t_list **stack_b, t_list **stack_a, t_data *data)
 {
 	t_list	*temp;
-	
-	if(*stack_b)
+
+	if (*stack_b)
 	{
 		temp = *stack_b;
-		add_node(stack_a,node((*stack_b)->value));
+		add_node(stack_a, node((*stack_b)->value));
 		*stack_b = (*stack_b)->next;
 		free(temp);
 		temp = NULL;
@@ -76,9 +75,9 @@ void	ra_help(t_data *data)
 {
 	if (ft_strcmp(data->output->out, "") != 0)
 	{
-		if(ft_strcmp(data->output->out, "rb") == 0)
+		if (ft_strcmp(data->output->out, "rb") == 0)
 		{
-			write(1,"rr\n",3);
+			write(1, "rr\n", 3);
 			data->output->out = "";
 		}
 		else
@@ -94,7 +93,7 @@ void	ra_help(t_data *data)
 	}
 }
 
-void	ra(t_list **stack,t_data *data)
+void	ra(t_list **stack, t_data *data)
 {
 	t_list	*temp_1;
 	t_list	*temp_2;
@@ -102,11 +101,10 @@ void	ra(t_list **stack,t_data *data)
 
 	temp_1 = *stack;
 	temp_2 = *stack;
-	
-	if(stack && (*stack)->next)
+	if (stack && (*stack)->next)
 	{
 		first_node = node((*stack)->value);
-		while(temp_1->next)
+		while (temp_1->next)
 			temp_1 = temp_1->next;
 		temp_1->next = first_node;
 		*stack = (*stack)->next;
@@ -114,4 +112,3 @@ void	ra(t_list **stack,t_data *data)
 		ra_help(data);
 	}
 }
-

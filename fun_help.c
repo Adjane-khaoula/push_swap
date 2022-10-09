@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:37:10 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/08 18:32:05 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/09 00:17:18 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	ft_atoi_help(char *str, unsigned int cmp, int sign)
 			while (*str && *str >= '0' && *str <= '9')
 			{
 				cmp = (cmp * 10) + (*str++ - '0');
-				if ((sign > 0 && cmp > 2147483647)|| (sign < 0 && (cmp > 2147483648)))
+				if ((sign > 0 && cmp > 2147483647)
+					|| (sign < 0 && (cmp > 2147483648)))
 					ft_error();
 			}
 		}
@@ -78,14 +79,14 @@ int	ft_atoi_help(char *str, unsigned int cmp, int sign)
 
 int	ft_atoi(char *str)
 {
-	unsigned int cmp;
-	int	sign;
+	unsigned int	cmp;
+	int				sign;
 
 	cmp = 0;
 	sign = 1;
 	if (ft_strlen(str) == 1 && (*str == '+' || *str == '-'))
 		ft_error();
 	else
-		return(ft_atoi_help(str, cmp, sign));
+		return (ft_atoi_help(str, cmp, sign));
 	return (0);
 }
