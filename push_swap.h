@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:20:26 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/09 04:23:10 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:10:51 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ typedef struct s_data
 	int		last_stack_b;
 	int		last_stack_a;
 	t_list	*output;
-
 }t_data;
 
-int		ft_atoi(char *str);
-void	ft_error(void);
+int		ft_atoi(char *str, t_list **stack_a);
 char	*ft_itoa(int n);
 int		ft_strlen(const char *str);
 void	ft_putstr(char *str);
@@ -50,6 +48,7 @@ void	add_node(t_list **stack, t_list *new_node);
 t_list	*node(int a);
 void	print_stack(t_list *stack);
 t_list	*node_store(char *output);
+void	ft_error(t_list **stack_a);
 
 void	sa(t_list	**stack, t_data *data);
 void	sa_help(t_data *data);

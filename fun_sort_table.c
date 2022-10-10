@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 00:28:37 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/09 03:56:36 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:07:10 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	*sort_stack_in_table(t_list	*stack_a, int nbr_node)
 
 	i = 1;
 	tab = malloc(sizeof(int) * nbr_node);
+	if (!tab)
+		return (0);
 	tmp = tab;
 	while (stack_a)
 	{

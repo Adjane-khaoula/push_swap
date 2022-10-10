@@ -6,7 +6,7 @@
 /*   By: kadjane <kadjane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:37:10 by kadjane           #+#    #+#             */
-/*   Updated: 2022/10/09 00:17:18 by kadjane          ###   ########.fr       */
+/*   Updated: 2022/10/10 16:07:38 by kadjane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_atoi_help(char *str, unsigned int cmp, int sign)
+int	ft_atoi_help(char *str, unsigned int cmp, int sign, t_list **stack_a)
 {
 	while (*str)
 	{
@@ -68,16 +68,16 @@ int	ft_atoi_help(char *str, unsigned int cmp, int sign)
 				cmp = (cmp * 10) + (*str++ - '0');
 				if ((sign > 0 && cmp > 2147483647)
 					|| (sign < 0 && (cmp > 2147483648)))
-					ft_error();
+					ft_error(stack_a);
 			}
 		}
 		else
-			ft_error();
+			ft_error(stack_a);
 	}
 	return (sign * cmp);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, t_list **stack_a)
 {
 	unsigned int	cmp;
 	int				sign;
@@ -85,8 +85,8 @@ int	ft_atoi(char *str)
 	cmp = 0;
 	sign = 1;
 	if (ft_strlen(str) == 1 && (*str == '+' || *str == '-'))
-		ft_error();
+		ft_error(stack_a);
 	else
-		return (ft_atoi_help(str, cmp, sign));
+		return (ft_atoi_help(str, cmp, sign, stack_a));
 	return (0);
 }
